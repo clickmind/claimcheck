@@ -36,3 +36,10 @@ Each item gets 1 primary call at temperature 0, plus 8 repeats at temperature 0.
 
 ## Stop rule
 A live tracker computes spend = usage tokens × the list prices above. **All calls stop if the projected spend after the next call would exceed $53** (hard cap $55). Partial results are reported as partial.
+
+## Addendum A: Claude arm (written and committed before any Claude call, 2026-10-22 ~09:52 CT)
+- Model `claude-sonnet-5-5` (Anthropic Messages API, `https://api.anthropic.com/v1/messages`). List price $2 / $10 per 1M in/out, cache reads $0.10 (https://docs.anthropic.com/en/docs/about-claude/pricing, read 09:40 CT). The ID was verified via the models list.
+- Same prompt, same 338 items, same parse rule and metrics as above. 1 call at temperature 0 plus 8 repeats at temperature 0.7, with `max_tokens` 2048. Anthropic has no `seed` parameter, so repeats differ only by sampling.
+- Thinking is adaptive and can't be disabled on Sonnet 5.5, so the defaults are used. If the API rejects a temperature with thinking on, that gets recorded as a deviation and the API default is used.
+- The stop rule is unchanged. Calls stop if the cumulative projected model-API total (including $12.14 already spent on Grok) would exceed $53. Cost is computed from returned usage × list price (input, cache write 1.25×, cache read $0.10, output).
+- Opus is not run (its projected ~$36 would break the stop).
