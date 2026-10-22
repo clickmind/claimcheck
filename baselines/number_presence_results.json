@@ -1,0 +1,22 @@
+[
+  {
+    "file": "finetune/count-family/test-syn_heldfmt.jsonl",
+    "input_commit": "5a145718be3352dfed34cc5d7b8d2e11cfa34b75",
+    "correct": 77,
+    "n": 80,
+    "true_claims_correct": 40,
+    "true_claims_n": 40,
+    "fakes_caught": 37,
+    "fakes_n": 40
+  },
+  {
+    "file": "finetune/count-family/test-syn_trainfmt.jsonl",
+    "input_commit": "5a145718be3352dfed34cc5d7b8d2e11cfa34b75",
+    "correct": 33,
+    "n": 40,
+    "true_claims_correct": 13,
+    "true_claims_n": 20,
+    "fakes_caught": 20,
+    "fakes_n": 20
+  }
+]
