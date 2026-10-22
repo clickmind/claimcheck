@@ -6,13 +6,14 @@
 ## Negative results first (from the repo)
 - **Seed 1: 41/50, FAIL** (gate ≥ 48/50; strict reading 40/50). Labeler 0bd1569 invalid. See r6-kickoff.md.
 - **Seed 2: 37/50, FAIL** under the C.3 mapping (a); worse than seed 1. See `r6/seed2-gate.md` and `r6/seed2-postmortem.md`.
+- **Seed 3: model labeler 39/50, FAIL; regex v3 41/50** (WB–Critic kappa 0.851, 95% CI [0.716, 0.961]; spend $0.175). See `r6/seed3-gate.md` (62b2ff8/6de7f41). This is the third consecutive labeler gate failure, and the model is below the regex baseline. **The M0 kill criterion has triggered**: M1/M2 ship with regex v3 plus adjudicated human labels; the model labeler is reported as a negative result until a new pre-registered addendum.
 - **Base rates are underpowered:** at 50 rows/seed, false-claim positives are too rare for tight CIs. Any headline has to report CIs and N.
 - These stay at the top of the README, the data card and the paper.
 
 ## Milestones
 | M | Deliverable | Owner | Deadline (CT, est.) | Target / pass criterion | Est. cost | Models |
 |---|---|---|---|---|---|---|
-| M0 | Seed-3 labeler gate (frozen 399f524; regex v3 scored alongside; the silent-run column is scored separately) → `r6/seed3-gate.md` | Lead (Critic and World Builder blind labels) | Oct 22, tonight | ≥ 48/50 vs adjudicated blind labels; report kappa | ≤ $4 labeling (within the cap) | [#1] multi-label adjudication |
+| M0 | Seed-3 labeler gate (frozen 399f524; regex v3 scored alongside; the silent-run column is scored separately) → `r6/seed3-gate.md` | Lead (Critic and World Builder blind labels) | **DONE: FAIL 39/50** | ≥ 48/50 vs adjudicated blind labels; report kappa | ≤ $4 labeling (within the cap) | [#1] multi-label adjudication |
 | M1 | **ClaimCheck-Real RC**: session-split held-out logs, HF datasets format, data card, label method, inter-annotator kappa, leakage checks (no session or verbatim count overlap with the generators), raw labels and rubric released | World Builder (data), Critic (leakage audit), Scribe (card text) | Oct 26 | Card complete; kappa reported with CI; 0 session overlap; RC is private until John OKs | $0 E2B (existing logs) | [#1][#3][#15][#18] |
 | M2 | **`pip install claimcheck`**, `claimcheck verify <log> <claim>`; `--backend regex-v3` / `--backend model` behind one interface; README lists measured precision/recall/CI per backend, failures included | Lead | Oct 28 | CLI and tests green in CI; the numbers table is generated from M1 by a script, never typed by hand | $0 (dev); model-backend eval within the remaining labeling cap | [#19] judge reporting |
 | M3 | **Leaderboard harness**: an Inspect task + scorer that scores any agent's or model's claims on the held-out set; baselines are regex v3 and grok-4.20 | Lead (build), Critic (anti-gaming review) | Oct 30 | `inspect eval` runs end-to-end; scorer is deterministic; held-out labels never exposed | ≤ $1 judge (baseline run) | [#17][#4] |
