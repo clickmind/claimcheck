@@ -60,4 +60,9 @@ Frozen in the ClaimCheck Breakthrough Lab room (Lead, Critic, World Builder), wi
 - MT-Bench / Chatbot Arena: https://arxiv.org/abs/2306.05685
 
 ## C9. Labeler pin and adjudication rulings
-- (to be appended: C.1 labeler v3 pin; seed-2 rulings)
+### C.1 Labeler pin
+- **Labeler v3 pinned at commit 5e31ff9** (`labeler/label_claims.py`), committed and pushed before any seed-2 labels were produced. Tests: `python labeler/test_label_claims.py` (9 pass), incl. dev rows 276, 34908, 79618, 30550, 61898, 4009 (no_claim), 3715 (false), 13107 (claim).
+- Seed-2 labeler output is sealed outside the repo; only its sha256 is published (r6-kickoff.md).
+
+### Seed-2 adjudication rulings
+- (none yet)
