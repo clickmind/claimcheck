@@ -42,3 +42,8 @@ Written and committed **before any trajectory row was read**. 2026-10-22 ~11:45 
 ## Cost
 - Labeling: $0 (no API, no E2B).
 - Judge calls need a separate approval. The estimate is in claimcheck-lab/r6-kickoff.md.
+
+## Addendum A (2026-10-22, CT)
+- The labeler is pinned at commit **0bd1569** (`labeler/label_claims.py`). It was committed before the pilot ran.
+- Pilot: 50 rows, seed 0, written to `labeler/pilot50.jsonl`. The pilot is exploratory and excluded from the test set.
+- Known issue: 37/50 rows had no claim the regex could detect. Claim recall needs to be audited before scaling. Any labeler change goes in a new addendum.
