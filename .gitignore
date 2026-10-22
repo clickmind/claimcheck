@@ -1,3 +1,4 @@
 node_modules/
 data/raw.json
 data/v1/claims.jsonl
+finetune/counterfactual/logs/

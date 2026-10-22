@@ -162,3 +162,48 @@ Fine-tuning taught the model surface cues (exit codes, failure words), not claim
 **Limits.** Subsets are tiny (10–15 items per recipe). Only one model size, one config and one seed were used for the held-out runs. Note: earlier tables count all 39 real test items for true-claim accuracy, one of which is labeled overclaimed. This table uses the 38 supported ones.
 
 Reproduce: `python run_e2b.py Qwen/Qwen2.5-0.5B-Instruct loro-swap --skip-zs --exclude perturbed:evidence_swapped` (likewise for `count_inflated` / `run_failed`; `--seed N` for seeds), then `python heldout-recipe/analyze_loro.py`.
+
+## Counterfactual minimal pairs (`finetune/counterfactual/`)
+
+**Question:** the held-out test above showed the model learned surface cues. Does training on counterfactual minimal pairs (same evidence, one detail changed) plus paraphrased claims and cue-masked evidence make it compare the claim to the log instead?
+
+The hypothesis, metrics and pass/fail thresholds were committed before any run: [`PREREGISTRATION.md`](finetune/counterfactual/PREREGISTRATION.md) (commit cb67c0f).
+
+**Setup.** Same split, model (Qwen2.5-0.5B), LoRA config, 3 epochs. `augment.py` makes three counterfactual types from real supported *training* items only: the run is of a different file (mirrors wrong run), the claim's count is changed (mirrors inflated count), the log is edited so tests failed (mirrors edited to fail). Half the copies get paraphrased claims and cue-masked evidence (exit line removed, fail/error words replaced). Sets are capped at 400 items, 200 / 200. **Leakage rule:** when recipe R is held out, both R's items and its mirroring counterfactual type are removed, so only the other two types remain. Baselines were re-run so every model is also scored on a **cue-masked test set** (exit line and fail/error words removed from the 77 test items). CIs are 95% session-level bootstraps; subsets are tiny (10–15 per recipe).
+
+**Held-out recipe catch (bold = held out of training, including its counterfactual type)**
+
+| Model | Wrong run (n=15) | Inflated count (n=10) | Edited to fail (n=13) | True-claim acc. (n=38) |
+|---|---|---|---|---|
+| Baseline, without wrong run | **0.00** [0.00, 0.00] | 0.00 | 1.00 | 1.00 |
+| CF, without wrong run, seed 0 | **0.87** [0.67, 1.00] | 0.90 | 1.00 | 1.00 |
+| CF, without wrong run, seed 1 | **0.60** [0.36, 0.81] | 0.80 | 1.00 | 0.95 |
+| Baseline, without inflated count | 0.87 | **0.10** [0.00, 0.30] | 1.00 | 0.90 |
+| CF, without inflated count, seed 0 | 0.93 | **0.10** [0.00, 0.30] | 1.00 | 0.84 |
+| CF, without inflated count, seed 1 | 0.93 | **0.30** [0.00, 0.60] | 1.00 | 0.92 |
+| Baseline, without edited to fail | 0.87 | 0.10 | **1.00** [1.00, 1.00] | 0.87 |
+| CF, without edited to fail, seed 0 | 1.00 | 0.90 | **0.92** [0.79, 1.00] | 0.87 |
+| CF, without edited to fail, seed 1 | 0.73 | 0.80 | **0.92** [0.79, 1.00] | **0.24** [0.10, 0.38] |
+
+**Cue-masked test (all 39 false claims; held-out recipe in brackets where relevant)**
+
+| Model | Catch, normal test | Catch, cue-masked | Edited-to-fail catch, masked | True-claim acc., masked |
+|---|---|---|---|---|
+| Baseline, full training | 0.72 [0.56, 0.86] | 0.49 [0.33, 0.65] | 0.23 | 0.84 |
+| CF, full training (seed 0) | 0.97 [0.92, 1.00] | 0.95 [0.88, 1.00] | 0.92 | 0.87 |
+| Baseline, without edited to fail | 0.72 | 0.46 | **0.15** | 0.87 |
+| CF, without edited to fail (seeds 0 / 1) | 0.95 / 0.82 | 0.90 / 0.69 | **0.77 / 0.54** | 0.87 / 0.26 |
+
+**Rationale target (one seed, exploratory).** Training to answer the label then quote the deciding evidence line gave held-out catch 0.80 (wrong run), 0.10 (count), 0.92 (fail), with true-claim accuracy 0.97 / 0.87 / 0.66. No clear gain over label-only, and worse true-claim accuracy in one run.
+
+**Against the pre-registered thresholds**
+- **H1 (held-out catch +25 points, 2 of 3 recipes improve): passes, narrowly.** Mean held-out catch went from 0.37 to 0.62 (+25.2). Almost all of it is wrong run (0.00 → 0.87 / 0.60). Inflated count barely moved (0.10 → 0.10 / 0.30), and edited to fail went slightly *down* (1.00 → 0.92) on the normal test.
+- **H2 (true-claim accuracy drops ≤ 10 points): fails.** Averaged over the six held-out runs, it fell from 0.95 to 0.80, mostly because one seed (without edited to fail, seed 1) collapsed to 0.24, calling most true claims false. Full CF training without holding anything out kept 0.87 (−8).
+- **H3 (baseline drops ≥ 15 points on cue-masked test, CF drops less): confirmed.** Baseline catch fell from 0.72 to 0.49 and edited-to-fail from 1.00 to 0.23 once the exit line and failure words were removed. CF training fell only from 0.97 to 0.95.
+- **H4 (rationale helps):** not supported in this one-seed test.
+
+**Honest read.** Counterfactual pairs fixed the clearest failure. A model that never saw a wrong-run example, or the file-swap pair that mirrors it, now catches most of them (0.87 and 0.60 vs. 0.00), so it compares the claimed file to the logged one. The cue-masked test shows the old 72% leaned on `exit 1` / "failed" text, and the new model doesn't. But counting still doesn't transfer: without count examples the model doesn't check numbers. Training is also unstable: one of two seeds lost most of its true-claim accuracy. With 10–15 items per recipe and two seeds, these are early signals, not established effects.
+
+**Cost.** About $5.20 of E2B CPU sandbox time at list price (22 sandboxes, ~35K sandbox-seconds, including one batch of 8 lost to a client timeout bug). No paid model API calls. Every sandbox id this experiment created, and when it was killed, is in `finetune/counterfactual/my-sandboxes.txt`.
+
+Reproduce: `python augment.py`, then e.g. `python run_e2b2.py cf-loro-swap-s0 --skip-zs --train data-swap.jsonl --seed 0` (baseline: `--exclude perturbed:evidence_swapped` with no `--train`; add `--rationale` for H4), then `python analyze_cf.py`.

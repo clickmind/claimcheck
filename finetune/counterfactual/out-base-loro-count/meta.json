@@ -1,0 +1,32 @@
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "epochs": 3,
+ "lr": 0.0002,
+ "maxlen": 768,
+ "lora": {
+  "r": 16,
+  "alpha": 32,
+  "targets": "q,k,v,o"
+ },
+ "seed": 0,
+ "exclude": "perturbed:count_inflated",
+ "n_train": 126,
+ "train_file": "",
+ "rationale": false,
+ "n_test": 77,
+ "train_log": [
+  {
+   "epoch": 1,
+   "train_loss": 0.5176572848059651
+  },
+  {
+   "epoch": 2,
+   "train_loss": 0.31642082077266265
+  },
+  {
+   "epoch": 3,
+   "train_loss": 0.1264709456369192
+  }
+ ],
+ "seconds": 806
+}
