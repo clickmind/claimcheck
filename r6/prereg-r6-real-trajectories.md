@@ -99,3 +99,6 @@ Inputs: John's instructions, the Critic's honesty pass (/workspace/career/xai/cr
 
 ### B7. Labeler pin
 - The new labeler commit is pinned in addendum B.1 after implementation.
+
+## Addendum B.1
+- **Labeler v2 pinned at commit f84ceec**, committed before the seed-1 re-pilot ran. Unit tests: `python labeler/test_label_claims.py` (4 pass).
