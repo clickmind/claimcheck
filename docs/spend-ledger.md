@@ -34,3 +34,10 @@ E2B rate: R3's own figure, $2.04 / 13,754 s = **$0.0001483/s (≈$0.53 per sandb
 
 ## Reconciliation with the Scribe's ~$13.8
 $7.31 E2B + $6.36 API = **$13.67** ≈ $13.8. The Scribe's figure combines both lines. Only E2B counts against the $100 cap.
+
+## Model API: judges run #1 (2026-10-22, approved by John 09:05 CT, cap $55)
+| Model | Calls | In tok | Reasoning tok | $ (xAI-reported) | $ list est. | Source |
+|---|---|---|---|---|---|---|
+| grok-4.20-0309-non-reasoning | 3,042 | 1,812,420 | 0 | 0.86 | 2.34 | judges/spend.json |
+| grok-4.7 | 3,042 | 5,046,084 | 1,357,817 | 11.28 | 18.26 | judges/spend.json |
+| **Total** | | | | **12.14** | 20.60 | plus a ~$0.0001 key smoke call |

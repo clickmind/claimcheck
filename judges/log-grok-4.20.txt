@@ -1,0 +1,16 @@
+200 grok-4.20-0309-non-reasoning 0.093 total 0.093
+400 grok-4.20-0309-non-reasoning 0.166 total 0.166
+600 grok-4.20-0309-non-reasoning 0.217 total 0.217
+800 grok-4.20-0309-non-reasoning 0.282 total 0.282
+1000 grok-4.20-0309-non-reasoning 0.33 total 0.33
+1200 grok-4.20-0309-non-reasoning 0.386 total 0.386
+1400 grok-4.20-0309-non-reasoning 0.439 total 0.439
+1600 grok-4.20-0309-non-reasoning 0.494 total 0.494
+1800 grok-4.20-0309-non-reasoning 0.548 total 0.548
+2000 grok-4.20-0309-non-reasoning 0.598 total 0.598
+2200 grok-4.20-0309-non-reasoning 0.648 total 0.648
+2400 grok-4.20-0309-non-reasoning 0.702 total 0.702
+2600 grok-4.20-0309-non-reasoning 0.749 total 0.749
+2800 grok-4.20-0309-non-reasoning 0.799 total 0.799
+3000 grok-4.20-0309-non-reasoning 0.851 total 0.851
+done 3042 grok-4.20-0309-non-reasoning {'in': 1812420, 'out': 29120, 'reasoning': 0, 'usd': 0.8580433999999973, 'calls': 3042, 'est_list_usd': 2.33832499999999} total 0.858 
