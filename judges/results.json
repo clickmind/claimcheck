@@ -1,5 +1,307 @@
 {
  "models": {
+  "claude-sonnet-5-5": {
+   "errors": 0,
+   "unparsed": 0,
+   "sets": {
+    "real77": {
+     "n_true": 38,
+     "n_false": 39,
+     "true_acc": 1.0,
+     "true_acc_ci": [
+      0.908,
+      1.0
+     ],
+     "catch": 0.974,
+     "catch_ci": [
+      0.868,
+      0.995
+     ],
+     "miss_rate": 0.026,
+     "miss_ci": [
+      0.005,
+      0.132
+     ],
+     "bal_acc": 0.987,
+     "n_calls_primary": 77,
+     "bal_acc_ci": [
+      0.958,
+      1.0
+     ],
+     "repeat_spread": {
+      "metric": "bal_acc",
+      "min": 0.948,
+      "max": 0.974,
+      "sd": 0.009,
+      "n_repeats": 8
+     },
+     "majority9": {
+      "n_true": 38,
+      "n_false": 39,
+      "true_acc": 0.974,
+      "true_acc_ci": [
+       0.865,
+       0.995
+      ],
+      "catch": 0.974,
+      "catch_ci": [
+       0.868,
+       0.995
+      ],
+      "miss_rate": 0.026,
+      "miss_ci": [
+       0.005,
+       0.132
+      ],
+      "bal_acc": 0.974
+     }
+    },
+    "masked77": {
+     "n_true": 38,
+     "n_false": 39,
+     "true_acc": 0.711,
+     "true_acc_ci": [
+      0.552,
+      0.83
+     ],
+     "catch": 0.974,
+     "catch_ci": [
+      0.868,
+      0.995
+     ],
+     "miss_rate": 0.026,
+     "miss_ci": [
+      0.005,
+      0.132
+     ],
+     "bal_acc": 0.842,
+     "n_calls_primary": 77,
+     "bal_acc_ci": [
+      0.763,
+      0.917
+     ],
+     "repeat_spread": {
+      "metric": "bal_acc",
+      "min": 0.83,
+      "max": 0.869,
+      "sd": 0.013,
+      "n_repeats": 8
+     },
+     "majority9": {
+      "n_true": 38,
+      "n_false": 39,
+      "true_acc": 0.711,
+      "true_acc_ci": [
+       0.552,
+       0.83
+      ],
+      "catch": 0.974,
+      "catch_ci": [
+       0.868,
+       0.995
+      ],
+      "miss_rate": 0.026,
+      "miss_ci": [
+       0.005,
+       0.132
+      ],
+      "bal_acc": 0.842
+     }
+    },
+    "heldout80": {
+     "n_true": 40,
+     "n_false": 40,
+     "true_acc": 1.0,
+     "true_acc_ci": [
+      0.912,
+      1.0
+     ],
+     "catch": 1.0,
+     "catch_ci": [
+      0.912,
+      1.0
+     ],
+     "miss_rate": 0.0,
+     "miss_ci": [
+      0.0,
+      0.088
+     ],
+     "bal_acc": 1.0,
+     "n_calls_primary": 80,
+     "bal_acc_ci": [
+      1.0,
+      1.0
+     ],
+     "repeat_spread": {
+      "metric": "bal_acc",
+      "min": 0.975,
+      "max": 1.0,
+      "sd": 0.01,
+      "n_repeats": 8
+     },
+     "majority9": {
+      "n_true": 40,
+      "n_false": 40,
+      "true_acc": 1.0,
+      "true_acc_ci": [
+       0.912,
+       1.0
+      ],
+      "catch": 1.0,
+      "catch_ci": [
+       0.912,
+       1.0
+      ],
+      "miss_rate": 0.0,
+      "miss_ci": [
+       0.0,
+       0.088
+      ],
+      "bal_acc": 1.0
+     }
+    },
+    "trainfmt33": {
+     "n_true": 15,
+     "n_false": 18,
+     "true_acc": 0.867,
+     "true_acc_ci": [
+      0.621,
+      0.963
+     ],
+     "catch": 1.0,
+     "catch_ci": [
+      0.824,
+      1.0
+     ],
+     "miss_rate": 0.0,
+     "miss_ci": [
+      0.0,
+      0.176
+     ],
+     "bal_acc": 0.933,
+     "n_calls_primary": 33,
+     "bal_acc_ci": [
+      0.833,
+      1.0
+     ],
+     "repeat_spread": {
+      "metric": "bal_acc",
+      "min": 0.939,
+      "max": 0.967,
+      "sd": 0.014,
+      "n_repeats": 8
+     },
+     "majority9": {
+      "n_true": 15,
+      "n_false": 18,
+      "true_acc": 0.933,
+      "true_acc_ci": [
+       0.702,
+       0.988
+      ],
+      "catch": 1.0,
+      "catch_ci": [
+       0.824,
+       1.0
+      ],
+      "miss_rate": 0.0,
+      "miss_ci": [
+       0.0,
+       0.176
+      ],
+      "bal_acc": 0.967
+     }
+    },
+    "family41": {
+     "n_true": 20,
+     "n_false": 21,
+     "true_acc": 0.95,
+     "true_acc_ci": [
+      0.764,
+      0.991
+     ],
+     "catch": 0.619,
+     "catch_ci": [
+      0.409,
+      0.792
+     ],
+     "miss_rate": 0.381,
+     "miss_ci": [
+      0.208,
+      0.591
+     ],
+     "bal_acc": 0.785,
+     "n_calls_primary": 41,
+     "bal_acc_ci": [
+      0.659,
+      0.895
+     ],
+     "repeat_spread": {
+      "metric": "bal_acc",
+      "min": 0.761,
+      "max": 0.832,
+      "sd": 0.027,
+      "n_repeats": 8
+     },
+     "majority9": {
+      "n_true": 20,
+      "n_false": 21,
+      "true_acc": 0.95,
+      "true_acc_ci": [
+       0.764,
+       0.991
+      ],
+      "catch": 0.667,
+      "catch_ci": [
+       0.454,
+       0.828
+      ],
+      "miss_rate": 0.333,
+      "miss_ci": [
+       0.172,
+       0.546
+      ],
+      "bal_acc": 0.808
+     }
+    },
+    "xcount30": {
+     "n_true": 0,
+     "n_false": 30,
+     "catch": 1.0,
+     "catch_ci": [
+      0.886,
+      1.0
+     ],
+     "miss_rate": 0.0,
+     "miss_ci": [
+      0.0,
+      0.114
+     ],
+     "n_calls_primary": 30,
+     "repeat_spread": {
+      "metric": "catch",
+      "min": 0.967,
+      "max": 1.0,
+      "sd": 0.011,
+      "n_repeats": 8
+     },
+     "majority9": {
+      "n_true": 0,
+      "n_false": 30,
+      "catch": 1.0,
+      "catch_ci": [
+       0.886,
+       1.0
+      ],
+      "miss_rate": 0.0,
+      "miss_ci": [
+       0.0,
+       0.114
+      ]
+     }
+    }
+   }
+  },
   "grok-4.20-0309-non-reasoning": {
    "errors": 0,
    "unparsed": 0,
@@ -4194,6 +4496,14 @@
    "usd": 11.284842000000017,
    "calls": 3042,
    "est_list_usd": 18.257321999999995
+  },
+  "claude-sonnet-5-5": {
+   "in": 1957599,
+   "out": 392139,
+   "reasoning": 0,
+   "usd": 7.836588000000001,
+   "calls": 3042,
+   "est_list_usd": 7.836588000000001
   }
  }
 }

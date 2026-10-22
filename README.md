@@ -323,5 +323,21 @@ On real77, rules v1 (`results/rules.json` @1852c8e) score balanced accuracy **0.
 
 **Cost (xAI-reported, `cost_in_usd_ticks`):** grok-4.20 **$0.86**, grok-4.7 **$11.28**, total **$12.14** (list-price estimate without cache discount: $20.60). Model-API spend, outside the E2B cap. E2B $0.
 
+### Claude arm (addendum A, pre-registered at c44877b before any Claude call)
+`claude-sonnet-5-5`, 3,042 calls, 0 errors, 0 unparsed. **Deviation:** the API rejects `temperature` for this model ("`temperature` is deprecated for this model"), so every call, primary and repeats, used the API's default sampling. The primary call isn't temperature 0.
+
+| Set | Bal. acc. [95% CI] | True-claim acc. | Miss rate on false claims | 8-repeat range |
+|---|---|---|---|---|
+| real77 | 0.987 [0.958, 1.0] | 1.0 | 0.026 | 0.948–0.974 |
+| masked77 | 0.842 [0.763, 0.917] | 0.711 | 0.026 | 0.83–0.869 |
+| heldout80 | 1.0 [1.0, 1.0] | 1.0 | 0.0 | 0.975–1.0 |
+| trainfmt33 | 0.933 [0.833, 1.0] | 0.867 | 0.0 | 0.939–0.967 |
+| family41 | 0.785 [0.659, 0.895] | 0.95 | 0.381 | 0.761–0.832 |
+| xcount30 | catch 1.0 | - | 0.0 | 0.967–1.0 |
+
+**Read.** On real77, Claude Sonnet 5.5 (**0.987**) is level with the hand-written rules (**0.974**). The CIs overlap, so there's no significant difference. It's the only judge with true-claim accuracy 1.0 on real77. Its weak spot is lint/typecheck: it misses **0.381** of false family claims. On the cue-stripped set it keeps catch at 0.974 but true-claim accuracy drops to 0.711.
+
+**Cost:** $7.84 (returned usage × list price; Anthropic doesn't return a $ figure). Model-API total for run #1: **$19.98** of the $55 cap.
+
 ## Next: ClaimCheck World (pre-registered, not run)
 [`finetune/world/PREREGISTRATION.md`](finetune/world/PREREGISTRATION.md) (commit 36997d8): real tiny vitest/pytest repos run in E2B with injected chaos (flaky tests, skipped files, timeouts, truncated logs, partial reruns, wrong cwd, missing env). A local model writes the claim, and labels come from the actual reporter output. Two hypotheses: World data beats the synthetic generator on held-out real logs, and a checker-driven fix loop raises the share of episodes that end with a true claim by ≥ 10 points.

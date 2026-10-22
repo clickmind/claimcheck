@@ -2,7 +2,7 @@
 import json, os, sys, time, threading, urllib.request, urllib.error
 from concurrent.futures import ThreadPoolExecutor
 MODEL = sys.argv[1]
-PRICE = {'grok-4.20-0309-non-reasoning': (1.25, 2.50), 'grok-4.7': (2.00, 6.00)}  # $/1M in, out (docs.x.ai/docs/models)
+PRICE = {'claude-sonnet-5-5': (2.00, 10.00), 'grok-4.20-0309-non-reasoning': (1.25, 2.50), 'grok-4.7': (2.00, 6.00)}  # $/1M in, out (docs.x.ai/docs/models)
 STOP = 53.0
 SPEND_FILE = 'judges/spend.json'
 def load(f): return [json.loads(l) for l in open(f) if l.strip()]
@@ -48,19 +48,37 @@ def call(job):
         avg = spend[MODEL]['usd'] / spend[MODEL]['calls'] if spend[MODEL]['calls'] else 0.02
         if sum(max(v['usd'], v.get('est_list_usd', 0)) for v in spend.values()) + 2 * avg > STOP: stopped.set(); return None
     it = SETS[s][idx]
+    CL = MODEL.startswith('claude')
     body = {'model': MODEL, 'messages': [{'role': 'user', 'content': prompt(it)}], 'temperature': 0 if rep == 0 else 0.7}
-    if rep: body['seed'] = rep
+    if CL: body['max_tokens'] = int(os.environ.get('MAXTOK', 2048))
+    if CL and os.environ.get('NOTEMP'): body.pop('temperature')
+    if rep and not CL: body['seed'] = rep
     for t in range(6):
         try:
-            rq = urllib.request.Request('https://api.x.ai/v1/chat/completions', data=json.dumps(body).encode(),
+            if CL: rq = urllib.request.Request('https://api.anthropic.com/v1/messages', data=json.dumps(body).encode(),
+                headers={'content-type': 'application/json', 'x-api-key': os.environ['ANTHROPIC_API_KEY'], 'anthropic-version': '2023-06-01'})
+            else: rq = urllib.request.Request('https://api.x.ai/v1/chat/completions', data=json.dumps(body).encode(),
                 headers={'content-type': 'application/json', 'authorization': 'Bearer ' + os.environ['XAI_API_KEY']})
             r = json.load(urllib.request.urlopen(rq, timeout=300)); break
         except Exception as e:
             code = getattr(e, 'code', 0)
-            if code and code not in (429,) and code < 500: return {'set': s, 'id': it['id'], 'rep': rep, 'error': f'{code}'}
+            if code and code not in (429, 529) and code < 500:
+                try: msg = e.read().decode()[:300]
+                except Exception: msg = ''
+                return {'set': s, 'id': it['id'], 'rep': rep, 'error': f'{code} {msg}'}
             time.sleep(5 * (t + 1))
     else: return {'set': s, 'id': it['id'], 'rep': rep, 'error': 'retries'}
-    u = r.get('usage', {}); pi, co = u.get('prompt_tokens', 0), u.get('completion_tokens', 0)
+    u = r.get('usage', {})
+    if CL:
+        cw, cr = u.get('cache_creation_input_tokens') or 0, u.get('cache_read_input_tokens') or 0
+        pi, co, rs = u.get('input_tokens', 0) + cw + cr, u.get('output_tokens', 0), 0
+        est = (u.get('input_tokens', 0) * 2.0 + cw * 2.5 + cr * 0.10 + co * 10.0) / 1e6; usd = est
+        txt = ''.join(b.get('text', '') for b in r.get('content', []) if b.get('type') == 'text')
+        with lock:
+            m = spend[MODEL]; m['in'] += pi; m['out'] += co; m['usd'] += usd; m['calls'] += 1; m['est_list_usd'] = m.get('est_list_usd', 0) + est
+        low = txt.lower(); pred = 'unsupported' if 'unsupported' in low else ('supported' if 'supported' in low else 'unparsed')
+        return {'set': s, 'id': it['id'], 'rep': rep, 'gold': it['label'], 'pred': pred, 'raw': txt, 'usage': u}
+    pi, co = u.get('prompt_tokens', 0), u.get('completion_tokens', 0)
     rs = (u.get('completion_tokens_details') or {}).get('reasoning_tokens', 0)
     p = PRICE[MODEL]; est = pi / 1e6 * p[0] + (co + rs) / 1e6 * p[1]  # conservative list-price estimate (no cache discount)
     ticks = u.get('cost_in_usd_ticks'); usd = ticks / 1e10 if ticks is not None else est  # xAI-reported cost, 1 tick = 1e-10 USD
