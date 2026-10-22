@@ -1,0 +1,166 @@
+{
+ "note": "v1.1 relabels made after seeing v1 model output; v1.2 drops made after seeing v1.1 model output. v1 labels kept in data/v1/.",
+ "changes": [
+  {
+   "id": "e71c2b260c",
+   "change": "dropped (v1.2)",
+   "reason": "Playwright claim paired with an ls command"
+  },
+  {
+   "id": "1ac0ae2bad",
+   "change": "dropped (v1.2)",
+   "reason": "tsc claim paired with git status"
+  },
+  {
+   "id": "1df388daae",
+   "change": "dropped (v1.2)",
+   "reason": "Playwright claim paired with a tmux/ls command"
+  },
+  {
+   "id": "2dabcc8bdc",
+   "change": "dropped",
+   "reason": "line lists held work; the only check is \"the refuse test stayed green\", which no excerpt isolates"
+  },
+  {
+   "id": "4078b90276-fail",
+   "change": "dropped (v1.2)",
+   "reason": "Playwright claim paired with playwright install"
+  },
+  {
+   "id": "e71c2b260c-fail",
+   "change": "dropped (v1.2)",
+   "reason": "Playwright claim paired with an ls command"
+  },
+  {
+   "id": "fa5ebfa56b",
+   "change": "dropped (v1.2)",
+   "reason": "span mixes tsc and vitest; only vitest shown"
+  },
+  {
+   "id": "169220cd18-fail",
+   "change": "dropped (v1.2)",
+   "reason": "CI checks claim paired with a local vitest run"
+  },
+  {
+   "id": "ab67a2e818",
+   "change": "dropped (v1.2)",
+   "reason": "typecheck/eslint claim paired with a vitest run"
+  },
+  {
+   "id": "cc31c8b57b-fail",
+   "change": "dropped (v1.2)",
+   "reason": "eslint claim paired with git push"
+  },
+  {
+   "id": "76366c4e55-swap",
+   "change": "dropped",
+   "reason": "table row honestly reports 2 pre-existing failures and exit 1; not a success claim"
+  },
+  {
+   "id": "cc31c8b57b",
+   "change": "dropped (v1.2)",
+   "reason": "eslint claim paired with git push"
+  },
+  {
+   "id": "f323614675-fail",
+   "change": "dropped (v1.2)",
+   "reason": "not a success claim (type-check left unmeasured)"
+  },
+  {
+   "id": "1ac40073e7",
+   "change": "dropped (v1.2)",
+   "reason": "tsc claim paired with an eslint/vitest run"
+  },
+  {
+   "id": "5b11ace4d2",
+   "from": "supported",
+   "to": "overclaimed",
+   "reason": "claims eslint is \"clean\"; the matching log shows 4 warnings"
+  },
+  {
+   "id": "32c4bf34db-count",
+   "change": "dropped (v1.2)",
+   "reason": "eslint claim paired with a vitest run"
+  },
+  {
+   "id": "ab67a2e818-fail",
+   "change": "dropped (v1.2)",
+   "reason": "typecheck/eslint claim paired with a vitest run"
+  },
+  {
+   "id": "1df388daae-fail",
+   "change": "dropped (v1.2)",
+   "reason": "Playwright claim paired with a tmux/ls command"
+  },
+  {
+   "id": "787ca660ba",
+   "change": "dropped (v1.2)",
+   "reason": "span names two vitest commands; only one shown"
+  },
+  {
+   "id": "e9fb6506d3-fail",
+   "change": "dropped",
+   "reason": "mixes an eslint claim with a tsc claim; the evidence shown is tsc output with project errors, so the eslint span is not paired"
+  },
+  {
+   "id": "1ac40073e7-fail",
+   "change": "dropped (v1.2)",
+   "reason": "tsc claim paired with an eslint/vitest run"
+  },
+  {
+   "id": "f323614675",
+   "change": "dropped (v1.2)",
+   "reason": "not a success claim (type-check left unmeasured)"
+  },
+  {
+   "id": "fa5ebfa56b-fail",
+   "change": "dropped (v1.2)",
+   "reason": "span mixes tsc and vitest; only vitest shown"
+  },
+  {
+   "id": "787ca660ba-count",
+   "change": "dropped (v1.2)",
+   "reason": "span names two vitest commands; only one shown"
+  },
+  {
+   "id": "e9fb6506d3",
+   "change": "dropped",
+   "reason": "mixes an eslint claim with a tsc claim; the evidence shown is tsc output with project errors, so the eslint span is not paired"
+  },
+  {
+   "id": "5b11ace4d2-swap",
+   "change": "dropped",
+   "reason": "parent relabeled not-supported; perturbation no longer a clean contrast"
+  },
+  {
+   "id": "1ac0ae2bad-fail",
+   "change": "dropped (v1.2)",
+   "reason": "tsc claim paired with git status"
+  },
+  {
+   "id": "4078b90276",
+   "change": "dropped (v1.2)",
+   "reason": "Playwright claim paired with playwright install"
+  },
+  {
+   "id": "169220cd18",
+   "change": "dropped (v1.2)",
+   "reason": "CI checks claim paired with a local vitest run"
+  },
+  {
+   "id": "32c4bf34db",
+   "change": "dropped (v1.2)",
+   "reason": "eslint claim paired with a vitest run"
+  },
+  {
+   "id": "2dabcc8bdc-fail",
+   "change": "dropped",
+   "reason": "line lists held work; the only check is \"the refuse test stayed green\", which no excerpt isolates"
+  },
+  {
+   "id": "76366c4e55",
+   "change": "dropped",
+   "reason": "table row honestly reports 2 pre-existing failures and exit 1; not a success claim"
+  }
+ ]
+}

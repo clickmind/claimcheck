@@ -1,0 +1,3 @@
+{ "name": "claimcheck", "private": true, "type": "module",
+  "scripts": { "baselines": "for c in always keyword rules; do tsx src/score.ts --checker $c; done", "model": "tsx src/score.ts --checker model" },
+  "devDependencies": { "tsx": "^4.19.0" } }
