@@ -1,27 +1,30 @@
-# Seed-4 gate (Addendum F): INCOMPLETE. v2 was not scored.
+# Seed-4 gate (Addendum F): v2 **PASS** (claim detection only)
 
-Status, 2026-10-22 CT: **no PASS/FAIL for v2.** The single v2 run aborted on its first API call. The cause was an operator error: the caller was launched from `labeler/`, and the spend-log path `r6/spend/labeler-judge-spend.jsonl` is relative, so `log_call` raised FileNotFoundError *after* the call to row offset 945 returned. No label was written or seen. That one call is **not in the spend log**, and its cost is unknown (est. under $0.01; unverified). Per the no-rerun rule, v2 has not been rerun. A rerun needs an explicit decision from the Lead (or John), recorded as a deviation.
+Run: v2 run #2, the one approved re-launch (see `r6/seed4-deviation.md`). Started from the repo root with frozen code: v2 3b26a8e1…8c24, prompt 32bb48b1…82cc, blind sheet 5a55a27c…9157. 50/50 rows labeled, 0 errors, 0 parse failures, exit 0. Model labels: `r6/audits/seed4-model-labels.jsonl`. Scoring: `r6/score_seed4.py`, output `r6/audits/seed4-score.json`.
 
-## Inputs (sha256 verified)
-- WB labels `r6/audits/r6-seed4-audit-worldbuilder.jsonl` ac680985…a1c1 (from 0c8870a)
-- Critic labels `r6/audits/r6-seed4-audit-critic.jsonl` 77b6f385…9b85 (9c0c938)
-- `labeler/model_labeler_v2.py` 3b26a8e1…8c24, prompt 32bb48b1…82cc, blind sheet `labeler/seed4_blind.jsonl` 5a55a27c…9157
-- Regex v3 output: `/workspace/claimcheck-lab/seed4-run/regex_v3.jsonl`, kept outside the repo because it contains target/eval fields
+**Limit, stated plainly:** seed 4 has **0 adjudicated seen-contradictions** (0 of 17 claim rows, Wilson [0.0, 0.184]). This PASS shows claim detection only. **It does not show that v2 catches false or contradicted claims.**
 
-## Human-human (WB vs Critic), all 50 rows
-- Claim kappa **0.878**, bootstrap 95% CI **[0.738, 1.0]** (2000 resamples, seed 0). Raw claim agreement 47/50. Gate agreement (claim + seen-contradicted) 47/50.
-- **Gate threshold = 0.738** (CI lower bound; the fallback of 0.716 was not needed).
-- Disagreements: 7713 (WB ambiguous / Critic claim+contradicts), 37775 (no_claim / claim), 40612 (ambiguous / claim+contradicts).
-- WB: 17 claim, 2 ambiguous, 31 no_claim, 0 contradicted. Critic: 20 claim, 30 no_claim, 2 contradicts.
+## Human-human (WB vs Critic)
+- Claim kappa 0.878, 95% bootstrap CI [0.738, 1.0] (2000 resamples, seed 0). Raw 47/50.
+- **Threshold = 0.738** (CI lower bound; the fallback was not used).
+- Adjudication (weaker label wins, C3): 7713 and 40612, WB ambiguous vs Critic claim+contradicted → ambiguous, not contradicted; 37775, WB no_claim vs Critic claim → no_claim.
+- Adjudicated: 17 claim, 2 ambiguous, 31 no_claim, 0 contradicted. Seen-contradicted limit: ≤ 2.
 
-## Adjudicated (weaker label wins, C3)
-- 17 claim, 2 ambiguous, 31 no_claim. Seen-contradicted: **0** of 17 claim rows (Wilson [0.0, 0.184]). Seen-contradicted limit for systems: ≤ 2.
+## Results
+| System | claim kappa vs adj | ≥ 0.738 | raw vs adj / WB / Critic | seen-contra on adj claim rows (≤2) | Gate |
+|---|---|---|---|---|---|
+| **v2** | **0.841** | yes | 45 / 45 / 45 | 1 | **PASS** |
+| hybrid (regex claims + v2 contra) | 0.692 | no | 41 / 41 / 43 | 1 | FAIL |
+| regex v3 (baseline) | 0.692 | no | 41 / 41 / 43 | 1 | FAIL |
 
-## Regex v3 baseline: would FAIL the primary gate
-- Claim kappa vs adjudicated **0.692** (< 0.738). Raw vs adjudicated 41/50, vs WB 41/50, vs Critic 43/50. Seen-contradicted on adjudicated claim rows: 1 (≤ 2, OK).
-- 9 disagreements, each counted once: claim 7713, 37775, 38265, 40612, 56497, 66633, 75021, 79410; seen-contradicted 34304.
+Secondary C.3(a) bar of ≥ 48/50 raw: v2 does not meet it (45/50). It is reported here, but it is not the gate under F5.
 
-## v2 / hybrid
-NOT RUN (see the status above). The hybrid needs v2 outputs.
+## Disagreements vs adjudicated, each row counted once
+- **v2 (5):** claim: 7713 (claim vs ambiguous), 34112 (claim vs no_claim), 40612 (claim+contradicted vs ambiguous), 66633 (ambiguous vs no_claim); seen-contradicted: 52637 (contradicted vs not).
+- **Hybrid (9):** claim: 7713, 37775, 38265, 40612, 56497, 66633, 75021, 79410; seen-contradicted: 52637.
+- **Regex v3 (9):** claim: 7713, 37775, 38265, 40612, 56497, 66633, 75021, 79410; seen-contradicted: 34304.
 
-Script: `r6/score_seed4.py`. Output: `r6/audits/seed4-score.json`.
+## Spend
+- v2 run #2: 50 calls, $0.180833 (log running total $0.17522 → $0.356053).
+- Plus the unlogged row-945 call from run #1, cost unknown (null; `r6/spend/labeler-judge-spend-notes.jsonl`).
+- Labeling cap: $4.00, so about $3.64 is left, minus the unknown call. The shared $10 cap is otherwise untouched.

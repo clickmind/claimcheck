@@ -45,7 +45,8 @@
    "adj": [
     "ambiguous",
     false
-   ]
+   ],
+   "adjudication_reason": "weaker label wins (C3): WB ambiguous vs Critic claim+contradicted -> ambiguous, not contradicted"
   },
   {
    "offset": 37775,
@@ -60,7 +61,8 @@
    "adj": [
     "no_claim",
     false
-   ]
+   ],
+   "adjudication_reason": "weaker label wins (C3): WB no_claim vs Critic claim -> no_claim, not contradicted"
   },
   {
    "offset": 40612,
@@ -75,7 +77,8 @@
    "adj": [
     "ambiguous",
     false
-   ]
+   ],
+   "adjudication_reason": "weaker label wins (C3): WB ambiguous vs Critic claim+contradicted -> ambiguous, not contradicted"
   }
  ],
  "regex_v3": {
@@ -197,5 +200,195 @@
    }
   ]
  },
- "v2": "NOT RUN: run aborted after 1 API call (operator cwd error); no labels produced"
+ "v2": {
+  "claim_kappa_vs_adj": 0.841,
+  "raw_vs_adj": 45,
+  "raw_vs_WB": 45,
+  "raw_vs_Critic": 45,
+  "seen_contra_on_adj_claim_rows": 1,
+  "seen_ok": true,
+  "PASS": true,
+  "disagreements_vs_adj": [
+   {
+    "offset": 7713,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "ambiguous",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 34112,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 40612,
+    "sys": [
+     "claim",
+     true
+    ],
+    "adj": [
+     "ambiguous",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 52637,
+    "sys": [
+     "claim",
+     true
+    ],
+    "adj": [
+     "claim",
+     false
+    ],
+    "pattern": "seen_contradicted"
+   },
+   {
+    "offset": 66633,
+    "sys": [
+     "ambiguous",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   }
+  ]
+ },
+ "hybrid": {
+  "claim_kappa_vs_adj": 0.692,
+  "raw_vs_adj": 41,
+  "raw_vs_WB": 41,
+  "raw_vs_Critic": 43,
+  "seen_contra_on_adj_claim_rows": 1,
+  "seen_ok": true,
+  "PASS": false,
+  "disagreements_vs_adj": [
+   {
+    "offset": 7713,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "ambiguous",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 37775,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 38265,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 40612,
+    "sys": [
+     "claim",
+     true
+    ],
+    "adj": [
+     "ambiguous",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 52637,
+    "sys": [
+     "claim",
+     true
+    ],
+    "adj": [
+     "claim",
+     false
+    ],
+    "pattern": "seen_contradicted"
+   },
+   {
+    "offset": 56497,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 66633,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 75021,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 79410,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   }
+  ]
+ },
+ "parse_failures_v2": 0
 }

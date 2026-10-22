@@ -39,7 +39,7 @@ adjc = [o for o in offs if adj(o)[0] == "claim"]; nadj = sum(adj(o)[1] for o in 
 out = dict(human_human=dict(claim_kappa=round(kappa(hh), 3), ci95=[round(lo, 3), round(hi, 3)], raw_claim_agree=sum(a == b for a, b in hh),
            raw_gate_agree=agree(wb, cr), WB_claim=C.Counter(a for a, _ in hh), Critic_claim=C.Counter(b for _, b in hh)),
            gate_threshold=round(thr, 3), adjudicated=dict(claim=C.Counter(adj(o)[0] for o in offs), seen_contradicted=nadj, of_claim_rows=len(adjc), wilson=wilson(nadj, len(adjc))),
-           human_disagreements=[dict(offset=o, WB=wb(o), Critic=cr(o), adj=adj(o)) for o in offs if wb(o) != cr(o)])
+           human_disagreements=[dict(offset=o, WB=wb(o), Critic=cr(o), adj=adj(o), adjudication_reason=("weaker label wins (C3): WB %s vs Critic %s%s -> %s, not contradicted" % (wb(o)[0], cr(o)[0], "+contradicted" if cr(o)[1] else "", adj(o)[0]))) for o in offs if wb(o) != cr(o)])
 systems = [("regex_v3", rx)] + ([("v2", ml), ("hybrid", hy)] if M is not None else [])
 for name, f in systems:
     k = kappa([(f(o)[0], adj(o)[0]) for o in offs]); sc = sum(f(o)[1] for o in adjc)
@@ -47,4 +47,5 @@ for name, f in systems:
         seen_contra_on_adj_claim_rows=sc, seen_ok=sc <= nadj + 2, PASS=bool(k >= thr and sc <= nadj + 2),
         disagreements_vs_adj=[dict(offset=o, sys=f(o), adj=adj(o), pattern=("claim" if f(o)[0] != adj(o)[0] else "seen_contradicted")) for o in offs if f(o) != adj(o)])
 if M is None: out["v2"] = "NOT RUN: run aborted after 1 API call (operator cwd error); no labels produced"
+out["parse_failures_v2"] = sum(1 for o in offs if M is not None and not M.get(o, {}).get("label"))
 json.dump(out, open("r6/audits/seed4-score.json", "w"), indent=1, default=dict); print(json.dumps(out, indent=1, default=dict))
