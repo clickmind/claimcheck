@@ -46,7 +46,7 @@ Pattern: the labeler keys on surface phrases ("successfully", "updated") and mis
 - On seen-contradicted, every kappa rests on 10–15 rows with 0–3 positives, so none of them tell us anything (C.3 d).
 
 ## 3. The headline label is too rare to measure
-Seen-contradicted counts on seed 2: WB 3/50, Critic 0 or 1 of 30 blind (contra counts 1 vs 0 on 11 both-claim rows), labeler 3 (all 3 rejected by both auditors).
+Seen-contradicted counts on seed 2: WB 3/50, Critic 0 in its blind 30 (gate: WB 1 vs Critic 0 on the 11 both-claim rows), labeler 3 (all 3 rejected by both auditors).
 The base rate is roughly 0–3/50. A 48/50 gate can be passed while getting every seen-contradicted row wrong. Report it as a count with a Wilson CI, never as a rate.
 
 ## 4. What we learned: unsupported verification (dev only)
