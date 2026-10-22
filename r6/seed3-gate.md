@@ -40,7 +40,7 @@ Adjudicated: **2 of 24 claim rows**, Wilson [0.023, 0.258]. WB 2, Critic 2, mode
 
 ## Spend (per-call log `r6/spend/labeler-judge-spend.jsonl`)
 50 calls, 148,157 input tokens, 2,730 output tokens. **Total $0.175220** at list price ($1.25/$2.50 per 1M, https://docs.x.ai/docs/models). Labeler cap $4.00 and total cap $10.00 were not reached. This leaves $9.82 of the shared $10, with the ≥$6 judge reserve untouched. No E2B.
-Note: the dry-run estimator ($0.2847 for 50 rows) was conservative overall, but it under-estimated the first row (22,770 input tokens, $0.0285). The cap check is per-call on a worst-case estimate, so it could overshoot by one under-estimated call.
+Note (corrected; see r6/seed3-postmortem.md): the dry-run estimator was NOT too low. The 50-row estimate ($0.2847) was above actual ($0.1752), and row 1 was also over-estimated (max est $0.0402 vs actual $0.0285, 22,770 input tokens); row 1 was simply ~20x a typical row. The earlier wording that it under-estimated row 1 was wrong.
 
 ## Model disagreements vs adjudicated (11 rows) and error patterns
 1. **Edit-done or plan statements read as claims (5 false positives):** 1985 ("conclude our investigation"), 33814 (hedged "should"), 61638 ("successfully added"), 61964 ("proceed to submit"), 62135 ("updated to handle"). Both auditors call these no_claim. This is the same paraphrase boundary that regex v3 struggled with, now failing in the opposite direction.

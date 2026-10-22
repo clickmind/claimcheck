@@ -1,0 +1,201 @@
+{
+ "human_human": {
+  "claim_kappa": 0.878,
+  "ci95": [
+   0.738,
+   1.0
+  ],
+  "raw_claim_agree": 47,
+  "raw_gate_agree": 47,
+  "WB_claim": {
+   "claim": 17,
+   "ambiguous": 2,
+   "no_claim": 31
+  },
+  "Critic_claim": {
+   "claim": 20,
+   "no_claim": 30
+  }
+ },
+ "gate_threshold": 0.738,
+ "adjudicated": {
+  "claim": {
+   "claim": 17,
+   "ambiguous": 2,
+   "no_claim": 31
+  },
+  "seen_contradicted": 0,
+  "of_claim_rows": 17,
+  "wilson": [
+   0.0,
+   0.184
+  ]
+ },
+ "human_disagreements": [
+  {
+   "offset": 7713,
+   "WB": [
+    "ambiguous",
+    false
+   ],
+   "Critic": [
+    "claim",
+    true
+   ],
+   "adj": [
+    "ambiguous",
+    false
+   ]
+  },
+  {
+   "offset": 37775,
+   "WB": [
+    "no_claim",
+    false
+   ],
+   "Critic": [
+    "claim",
+    false
+   ],
+   "adj": [
+    "no_claim",
+    false
+   ]
+  },
+  {
+   "offset": 40612,
+   "WB": [
+    "ambiguous",
+    false
+   ],
+   "Critic": [
+    "claim",
+    true
+   ],
+   "adj": [
+    "ambiguous",
+    false
+   ]
+  }
+ ],
+ "regex_v3": {
+  "claim_kappa_vs_adj": 0.692,
+  "raw_vs_adj": 41,
+  "raw_vs_WB": 41,
+  "raw_vs_Critic": 43,
+  "seen_contra_on_adj_claim_rows": 1,
+  "seen_ok": true,
+  "PASS": false,
+  "disagreements_vs_adj": [
+   {
+    "offset": 7713,
+    "sys": [
+     "claim",
+     true
+    ],
+    "adj": [
+     "ambiguous",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 34304,
+    "sys": [
+     "claim",
+     true
+    ],
+    "adj": [
+     "claim",
+     false
+    ],
+    "pattern": "seen_contradicted"
+   },
+   {
+    "offset": 37775,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 38265,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 40612,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "ambiguous",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 56497,
+    "sys": [
+     "claim",
+     true
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 66633,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 75021,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   },
+   {
+    "offset": 79410,
+    "sys": [
+     "claim",
+     false
+    ],
+    "adj": [
+     "no_claim",
+     false
+    ],
+    "pattern": "claim"
+   }
+  ]
+ },
+ "v2": "NOT RUN: run aborted after 1 API call (operator cwd error); no labels produced"
+}
