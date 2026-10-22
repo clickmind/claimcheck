@@ -1,0 +1,4 @@
+iem5xpy6jcqolsdqf330n probe created 08:04:27
+iem5xpy6jcqolsdqf330n probe killed 08:04:39 after 12s
+im3gog5ure2qgfnrpt2ra smoke created 08:05:45
+im3gog5ure2qgfnrpt2ra smoke killed 08:13:23 (orphaned after interrupted command; killed by id)
