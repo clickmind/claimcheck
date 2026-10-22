@@ -132,3 +132,33 @@ The Grok and rules rows are the v1.2 predictions restricted to the same 77 items
 - **1.5B not finished.** A 1.5B run was started and stopped: on CPU, it would not have finished inside the sandbox time limit.
 
 **Reproduce:** `cd finetune && python run_e2b.py Qwen/Qwen2.5-0.5B-Instruct q05 && python analyze.py`. This needs `E2B_API_KEY` and a template with torch, transformers 4.46.3 and peft 0.13.2.
+
+## Held-out recipe test (`finetune/heldout-recipe/`)
+
+**Question:** does the fine-tuned 0.5B model learn to check claims, or just the three recipes used to make bad claims?
+
+**Setup.** Leave one recipe out: train the same LoRA config (Qwen2.5-0.5B, seed 0) with one recipe's false items removed from training. Training sets were 126 items without wrong-run, 117 without inflated-count and 112 without edited-to-fail. Evaluate on the same 77 held-out-session test items. Two extra seeds (1, 2) of the full setup measure seed noise. CIs are 95% session-level bootstraps, and are wide because the subsets are small.
+
+| Model | Catch: wrong run (n=15) | Catch: inflated count (n=10) | Catch: edited to fail (n=13) | Catch: all (n=39) | True-claim acc. (n=38) |
+|---|---|---|---|---|---|
+| Zero-shot | 0.067 [0.00, 0.21] | 0.00 | 0.385 [0.09, 0.65] | 0.154 | 1.000 |
+| Full training, seed 0 | 0.867 [0.67, 1.00] | 0.10 [0.00, 0.30] | 1.000 | 0.718 | 0.947 |
+| Full training, seed 1 | 0.933 | 0.10 | 1.000 | 0.744 | 0.895 |
+| Full training, seed 2 | 0.933 | 0.10 | 1.000 | 0.744 | 0.868 |
+| **Without wrong run** | **0.000** [0.00, 0.00] | 0.00 | 1.000 | 0.333 | 1.000 |
+| **Without inflated count** | 0.867 | **0.10** [0.00, 0.30] | 1.000 | 0.718 | 0.895 |
+| **Without edited to fail** | 0.867 | 0.10 | **1.000** [1.00, 1.00] | 0.718 | 0.868 |
+
+Bold cells are the held-out recipe.
+
+**Honest read.** It does not generalize in any real sense.
+- **Wrong run doesn't transfer.** With those items removed from training, catch rate on them falls to 0%, below zero-shot (7%). The model never learned to compare the claimed file or command with the logged one on its own.
+- **Inflated count was never learned.** Catch rate is 10% even with full training, across all 3 seeds, so holding it out shows nothing. Counting is beyond this setup.
+- **Edited to fail transfers, but it's trivial.** It is caught 100% even when held out, because the sign is a visible `exit 1` / "failed", which the model picks up from the other recipes and from zero-shot (38%).
+- **Seed noise is small** next to these effects (overall catch 0.72–0.74).
+
+Fine-tuning taught the model surface cues (exit codes, failure words), not claim checking. In-distribution numbers (72%) overstate what it learned.
+
+**Limits.** Subsets are tiny (10–15 items per recipe). Only one model size, one config and one seed were used for the held-out runs. Note: earlier tables count all 39 real test items for true-claim accuracy, one of which is labeled overclaimed. This table uses the 38 supported ones.
+
+Reproduce: `python run_e2b.py Qwen/Qwen2.5-0.5B-Instruct loro-swap --skip-zs --exclude perturbed:evidence_swapped` (likewise for `count_inflated` / `run_failed`; `--seed N` for seeds), then `python heldout-recipe/analyze_loro.py`.
