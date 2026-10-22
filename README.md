@@ -63,9 +63,9 @@ F1 by kind (v1.2): grok-4.20 non-reasoning: test 0.954, lint 0.774, typecheck 1.
 
 v1 → v1.1 changed the prompt, the data and the labels at once. v1.1 → v1.2 only dropped items that both models had flagged, so part of that gain comes from removing items the models got wrong. Read the version-to-version gains with that in mind. The within-version comparison between checkers is the fairer one.
 
-**What the errors show (v1.1, still true in v1.2).**
-- **grok-4.7 is still the strict one.** It catches every inflated count and every edited-to-fail run, but rejects 31 of 122 real claims. 8 of 18 typecheck items are wrong, often where success shows only as an exit marker (`EXIT:0`) with no output.
-- **grok-4.20 non-reasoning still misses some counts.** It let through 5 of 28 inflated counts.
+**What the errors show (v1.2).**
+- **grok-4.7 is still the strict one.** It catches every inflated count and every edited-to-fail run, but rejects 20 of the 109 supported real claims. 4 of 10 typecheck items are wrong, often where success shows only as an exit marker (`EXIT:0`) with no output.
+- **grok-4.20 non-reasoning still misses some counts.** It let through 5 of 26 inflated counts.
 - **Lint and typecheck stay the weak spot for every checker.** Successful runs print almost nothing, so a wrong-run item looks like a right one.
 - **Label noise fixed in v1.2.** The weak pairings found in v1.1 are dropped (see above).
 
