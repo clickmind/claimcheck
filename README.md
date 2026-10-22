@@ -97,6 +97,8 @@ Results go to `results/<checker>.json` with every prediction.
 
 MIT. See `LICENSE`.
 
+> **Reading guide for the fine-tuning sections below.** Any cell with n < 30 (count n=10, wrong run n=15, failed run n=13, family-eval n=12/13) is **exploratory**: its CIs are wide and overlap across most conditions. Rows labeled "seed 0" without other seeds (leave-one-recipe-out and the counterfactual tables) are **single-seed results** and shouldn't be cited as effects.
+
 ## Small fine-tuning experiment (`finetune/`)
 
 **Question:** can a tiny open model learn this task from about 140 examples?
@@ -226,7 +228,7 @@ Pre-registered before training: [`PREREGISTRATION.md`](finetune/count-family/PRE
 | 3 (ep2) | 1.00 | 0.20 | 1.00 / 0.97 | 0.53 | 0.59 | 0.85 |
 | **Mean** | **0.99** | **0.28** | **1.00 / 0.96** | **0.47** | 0.59 | 0.78 |
 
-Only seed 2 met the ≥ 0.95 val guardrail at some epoch. The other three used the fallback rule. Seed 0 would have collapsed at later epochs (true-claim accuracy 0.21 and 0.13 at epochs 2–3), so the selection rule mattered. Per-epoch numbers and CIs are in `results.json`.
+**Provenance gap:** `out-s3/log.txt` and `out-s3/meta.json` are 0 bytes, so seed 3's hyperparameters and runtime can't be verified. Its numbers are exploratory. Only seed 2 met the ≥ 0.95 val guardrail at some epoch. The other three used the fallback rule. Seed 0 would have collapsed at later epochs (true-claim accuracy 0.21 and 0.13 at epochs 2–3), so the selection rule mattered. Per-epoch numbers and CIs are in `results.json`.
 
 **Against the pre-registered thresholds**
 - **H1, real count transfer ≥ 0.50: fails (0.28).** One seed reached 0.80, and the others got 0.00–0.20.
@@ -236,7 +238,7 @@ Only seed 2 met the ≥ 0.95 val guardrail at some epoch. The other three used t
 - **H5, cue-stripped drop ≤ 10 points: passes.** Catch went *up* (0.59 → 0.78), so stripping cues makes the model more suspicious rather than less. That isn't a clean "no cue reliance" result.
 - **H6, seed spread ≤ 10 points: passes** (3 points).
 
-**Honest read.** Counting does generalize across synthetic formats: 1.00 catch on two formats never trained. But it barely transfers to the real vitest claims from my agents' logs (0.28). The synthetic task is learnable, and the gap is synthetic → real, not format → format. Real claims are messier: fractions like `<dir>/23`, several numbers per line, partial summaries. The guardrail held at ~0.99 true-claim accuracy, but the selected checkpoints are conservative and catch fewer fakes overall (0.59 vs 0.97 for last round's full training). Wrong-run transfer also got worse without vitest-format counterfactuals in training. Four seeds and 10–15 items per recipe: early signals only.
+**Honest read.** *(Demoted.)* The 1.00 catch on the two never-trained formats does **not** show counting: a no-model rule ("every number in the claim appears in the log") scores 77/80 on the same file (`baselines/number_presence_results.json`, inputs @5a14571), because the true count appears verbatim in those logs. The model also barely transfers to the real vitest claims from my agents' logs (0.28). The synthetic task is learnable, and the gap is synthetic → real, not format → format. Real claims are messier: fractions like `<dir>/23`, several numbers per line, partial summaries. The guardrail held at ~0.99 true-claim accuracy, but the selected checkpoints are conservative and catch fewer fakes overall (0.59 vs 0.97 for last round's full training). Wrong-run transfer also got worse without vitest-format counterfactuals in training. Four seeds and 10–15 items per recipe: early signals only.
 
 **Cost.** About $2.04 of E2B CPU time at list price (4 sandboxes, 13,754 sandbox-seconds), which brings the whole counterfactual + count-family series to about $7.20 of the series cap (since raised to a hard $100 E2B cap, per John Golat, Oct 22 2026; model-API spend is tracked separately and is not covered by the cap). Spend to date: see [`docs/spend-ledger.md`](docs/spend-ledger.md). No paid model APIs. Sandbox ids and kill times are in `finetune/count-family/my-sandboxes.txt`.
 
@@ -264,7 +266,7 @@ Pre-registered before training: [`PREREGISTRATION.md`](finetune/realistic-count/
 - **P3, true-claim accuracy ≥ 0.95: fails, narrowly (0.948).** Seed 0 is at 0.90, and its val true-claim accuracy never reached 0.95, so the fallback rule picked it.
 - **So the round does not pass as pre-registered.** Two of three thresholds pass by wide margins, and the third misses by 0.2 points because of one seed.
 
-**Honest read.** Making the synthetic data look like real agent output moved real count catch from 0.28 to 0.88 and wrong-run catch from 0.47 to 0.82, with no stripped-cue collapse (0.87 → 0.86). One caveat matters: real count fakes from *train sessions* are back in training, so the count test is now held out by session, not by recipe. That makes it an easier test than count-family's. The realism of the data is the main lever, but we can't separate "realistic generator" from "real count items back in" in this round. True-claim accuracy is right at the edge, and one seed of four costs it. Small test sets (10 count, 15 wrong-run).
+**Honest read.** Making the synthetic data look like real agent output moved real count catch from 0.28 to 0.88 and wrong-run catch from 0.47 to 0.82, with no stripped-cue collapse (0.87 → 0.86). One caveat matters: real count fakes from *train sessions* are back in training, so the count test is now held out by session, not by recipe. That makes it an easier test than count-family's. *(Demoted: no ablation.)* This round can't separate "realistic generator" from "real count items back in". True-claim accuracy is right at the edge, and one seed of four costs it. Small test sets (10 count, 15 wrong-run).
 
 Cost: 4 sandboxes, 12,435 sandbox-seconds, about $1.84 at E2B list price.
 
@@ -278,7 +280,7 @@ Pre-registered before training: [`PREREGISTRATION.md`](finetune/scale-family/PRE
 
 **Arms.** *Main:* no lint/typecheck claims in training or validation. *Control:* the same recipe, with lint/typecheck from train sessions allowed (this equals the realistic-count recipe). **Family-eval** is 25 lint/typecheck items (12 true, 13 false) from sessions in no training set. **Expanded real count** applies the benchmark's count recipe to every eligible real true claim in test sessions: 30 items, up from 10.
 
-**Deviation:** 2 of the 8 runs (main seed 0, control seed 2) were ended by E2B's 1-hour sandbox runtime limit before writing results. Results below are 3 seeds per arm, not 4.
+**Deviation:** 2 of the 8 runs (main seed 0, control seed 2) were ended by E2B's 1-hour sandbox runtime limit before writing results. Results below are 3 seeds per arm, not the pre-registered 4. **This is a deviation from the pre-registration, so F1/F2/C1 are reported on fewer seeds than registered.** Main seed 3 (`out-m3/log.txt`, `out-m3/meta.json`) also has 0-byte provenance files, so it's exploratory.
 
 | Run (epoch) | True-claim acc. (n=38) | Expanded real count catch (n=30) | Wrong-run catch | Family-eval true (n=12) | Family-eval catch (n=13) |
 |---|---|---|---|---|---|
