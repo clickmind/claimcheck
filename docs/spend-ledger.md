@@ -1,10 +1,11 @@
 # ClaimCheck spend ledger (draft, 2026-10-22 ~08:20 CT)
-The $40 hard cap covers **E2B sandbox spend only**. xAI model-API spend is a separate line, outside the cap.
+The **hard $100 E2B cap** (John via Cos, Oct 22; was $40) covers **E2B sandbox spend only**. xAI model-API spend is a separate line, outside the cap.
 E2B rate: R3's own figure, $2.04 / 13,754 s = **$0.0001483/s (≈$0.53 per sandbox-hour)**. Seconds come from the kill lines in each `my-sandboxes.txt`.
 
 ## E2B headline
 - **Logged so far (from the sandbox logs): $7.31.**
-- **Worst-case remaining: $40 − $7.31 − $8.10 (13 open R4 sandboxes × 4,200 s) = $24.59**, before the UNKNOWN rounds below.
+- **Worst-case remaining: $100 − $7.31 − $8.10 (13 open R4 sandboxes × 4,200 s) = $84.59**, before the UNKNOWN rounds below.
+- **Reserve: $10. Spend gate (worst case − reserve): $74.59**, before the UNKNOWN rounds. No round starts if its ceiling exceeds what is left of the gate.
 - **Total E2B spend: unknown until R4 pulls E2B's own usage data.**
 - $8.18 was reported to the Scribe; **source unverified**. It is $0.87 above the logged $7.31. Possible causes: the UNKNOWN rounds, or accrual on open sandboxes. Not confirmed.
 
@@ -32,4 +33,4 @@ E2B rate: R3's own figure, $2.04 / 13,754 s = **$0.0001483/s (≈$0.53 per sandb
 - The README's own "about" figures sum to ≈$6.59: v1.2 $1.54, v1.1 ×2 ~$3.40, v1 ~$1.65. On top of that, the v1 stalled attempt is **UNKNOWN** ("unlogged spend").
 
 ## Reconciliation with the Scribe's ~$13.8
-$7.31 E2B + $6.36 API = **$13.67** ≈ $13.8. The Scribe's figure combines both lines. Only E2B counts against the $40 cap.
+$7.31 E2B + $6.36 API = **$13.67** ≈ $13.8. The Scribe's figure combines both lines. Only E2B counts against the $100 cap.

@@ -1,6 +1,6 @@
 # ClaimCheck research agenda: the next 3 rounds after R4
 
-Draft rev 2, 2026-10-22 ~08:25 CT (America/Chicago). Every number comes from the repo `claimcheck-public` (HEAD ab915df)
+Draft rev 3, 2026-10-22 ~08:45 CT (America/Chicago). Every number comes from the repo `claimcheck-public` (HEAD ab915df)
 or from my own offline re-computation, marked as such. **No sandboxes were launched to write this.**
 
 Round naming: R3 = count family (`finetune/count-family/`, pre-reg 5a14571, results 724de33).
@@ -61,7 +61,7 @@ learned verifier. Any learned-checker claim has to be made on logs where that sc
 ## Spend (see `spend-ledger.md`)
 - E2B logged so far: **$7.31** (sandbox logs). The first fine-tune and left-out-recipe rounds are **UNKNOWN** (no sandbox log located).
 - Worst case for the 13 open R4 sandboxes: **$8.10** (13 × 4,200 s).
-- Remaining budget: **unknown until R4 posts**. Worst case is **$24.59** ($40 − $7.31 − $8.10), before the UNKNOWN rounds.
+- Cap: **hard $100 E2B** (John via Cos, Oct 22). Remaining budget: **unknown until R4 posts**. Worst case is **$84.59** ($100 − $7.31 − $8.10). With a $10 reserve, the **gate is $74.59**, before the UNKNOWN rounds.
 - The reported $8.18 has an unverified source and isn't used.
 - xAI API spend (**$6.36**) is outside the cap.
 - Rate: $0.0001483/s (≈$0.53 per sandbox-hour), from R3's own $2.04 / 13,754 s. One training run at the 4,200 s cap ≈ **$0.62**.
@@ -103,14 +103,22 @@ learned verifier. Any learned-checker claim has to be made on logs where that sc
   15 pts, it holds for every writer, and H2 passes with its Wilson CI. **Nice:** H1 passes but H2 doesn't.
   **Negative worth publishing:** the 0.5B checker can't beat the v3 chaos-aware script.
 
-### R6: RL with a verifier reward vs SFT, feasibility smoke test only (rank 2)
+### R6: RL with a verifier reward vs SFT at 0.5B (rank 2)
 - **Why it's frontier:** World provides an executable reward. R3 showed SFT trading recall for the guardrail (seed collapse
-  to 0.13–0.21 true accuracy).
-- **This round:** a **≈$0.30 smoke test** only. It measures whether an RL (e.g. GRPO) run at 0.5B fits within 4,200 s on
-  the E2B CPU template. A full SFT-vs-RL round gets pre-registered and costed **only if the smoke test fits**, and is paid
-  from what's left after R5/R7 and the reserve. The savings went to R5's 8 seeds.
-- **Outcome:** it fits → write the R6 pre-reg. It doesn't fit → publish the measured bound ("verifier-reward RL at 0.5B
-  doesn't fit an 8 GB CPU sandbox in 4,200 s").
+  to 0.13–0.21 true accuracy). The question is whether RL removes that trade-off.
+- **Three conditions (from the Critic; all are required):**
+  1. The reward comes **only from the run-output labels** (`world/label.py` on actual reporter output). It never comes
+     from the v3 suite or any rule baseline, which stay evaluation-only.
+  2. **Matched compute, items and seeds:** SFT and RL get the same training items, the same per-run wall budget
+     (4,200 s force-stop) and **8 seeds each** (0–7).
+  3. It **starts only after the R5 label audit passes (≥48/50)**. If the audit fails, R6 doesn't start.
+- **Step 0:** a ≈$0.30 feasibility smoke test, to check that an RL (e.g. GRPO) run at 0.5B fits within 4,200 s on the
+  8 GB CPU template. If it doesn't fit, publish the bound and stop.
+- **Core hypothesis:** on R5's held-out repos, RL matches SFT on true-claim accuracy (≥0.95) and gains ≥15 pts catch, with
+  a smaller between-seed spread on catch. Reported against the best of v2/v3, zero-shot and claim-only.
+- **E2B ceiling: ≈ $10.3.** Smoke test $0.30, plus 2 arms × 8 seeds × 4,200 s × $0.0001483/s ($4.98 per arm).
+- **Breakthrough:** true ≥0.95 *and* catch ≥0.80 across all 8 RL seeds. **Nice:** similar means but more stable. **Negative
+  worth publishing:** with exact-execution reward at matched compute, RL is no better than SFT.
 
 ### R7: cross-family transfer and a larger held-out set (rank 3)
 - **Why it's frontier:** does verification transfer to claim types never trained? This extends R4's family-transfer
@@ -122,19 +130,19 @@ learned verifier. Any learned-checker claim has to be made on logs where that sc
 - **Breakthrough:** zero-example held-out-family catch ≥0.70, ahead of v3. **Nice:** transfer with 10 examples.
   **Negative worth publishing:** no family transfer.
 
-## Budget roll-up (worst case, against the ledger)
-| Item | $ |
+## Budget roll-up (worst case, hard $100 E2B cap)
+| Item | $ ceiling |
 |---|---|
 | E2B logged so far | 7.31 |
 | 13 open R4 sandboxes at 4,200 s | 8.10 |
-| R5 (8 seeds) | 8.1 |
-| R6 smoke | 0.3 |
-| R7 | 5–7 |
-| Reserve (reruns of invalid seeds) | 5.0 |
-| **Projected worst case** | **33.8–35.8 of 40** |
+| Reserve (reruns of invalid seeds) | 10.00 |
+| **Gate for new rounds** | **74.59** |
+| R5 World (8 seeds) | 8.1 |
+| R6 RL vs SFT (smoke + 2 × 8 seeds) | 10.3 |
+| R7 cross-family | 7.0 |
+| **Planned R5–R7** | **25.4** (≈49.2 of the gate unallocated) |
 This excludes the UNKNOWN first-fine-tune and left-out-recipe rounds. The total is unknown until R4 posts E2B usage.
-**Fallback rule (the only one): cut R6 first.** The full R6 is never started unless the smoke test fits and the budget
-stays above the reserve after R5 and R7.
+**Fallback rule (the only one): cut R6 first.**
 
 ## Changelog
 - rev 2 (08:25 CT): adopted all eight points from the Critic's agenda review (`critic/agenda-review.md`): 8 seeds,
@@ -142,3 +150,4 @@ stays above the reserve after R5 and R7.
   with Wilson CIs, ≥5 held-out repos, $5 reserve with R6 cut to a smoke test. Also added the v3 chaos-aware suite, the
   clean-log-counting negative result, the single fallback rule, and a re-costing against `spend-ledger.md`.
   Thanks to the Critic.
+- rev 3 (08:45 CT): hard $100 E2B cap with a $10 reserve, so the gate is $74.59. R6 is restored as a full RL-vs-SFT plan under the Critic's three conditions (labels-only reward, matched compute/items/8 seeds, starts only after a 48/50 label audit). Number-presence baseline committed (`baselines/`, 77/80).
