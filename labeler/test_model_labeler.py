@@ -57,3 +57,13 @@ def test_cap_blocks_before_call():
     p = _log([dict(phase="labeler", usd=4.0)])
     def boom(_): raise AssertionError("API called")
     with pytest.raises(m.CapReached): m.label_row(ROW, log=p, api=boom)
+
+def test_estimate_uses_actual_tokens_with_margin():
+    m._RATIO["max_tokens_per_byte"] = None
+    t = "x" * 3000
+    assert m.est_prompt_tokens(t) == 1001
+    m.observe(t, 3000)  # actual 1 token/byte, worse than chars/3
+    assert m.est_prompt_tokens(t) == 4501  # 3000 * 1.0 * 1.5 + 1
+    m.observe(t, 10)  # lower ratio never lowers the estimate
+    assert m.est_prompt_tokens(t) == 4501
+    m._RATIO["max_tokens_per_byte"] = None

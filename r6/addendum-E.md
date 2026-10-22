@@ -56,3 +56,8 @@ Output schema:
 - Caller committed at 399f524: `labeler/model_labeler.py` sha256 `e65144a183595cfda7c7e3092db43d2a383d4c5b2eb9c607133a7d81efbc1578`. Prompt file `labeler/model_labeler_prompt.txt` (byte-identical to the E2 block; checked by a unit test) sha256 `0fc4aa3a0e1c051a5c85cd9a587a1fc898467fb855591d7ca32e57d0377f6b2c`.
 - List price per https://docs.x.ai/docs/models (fetched 2026-10-22). grok-4.20-0309 (reasoning, non-reasoning and multi-agent are priced the same). Under 200k prompt tokens: $1.25/1M input, $0.20/1M cached input, $2.50/1M output. At 200k or more: $2.50 / $0.40 / $5.00. The model string sent is `grok-4.20` (alias), per E1.
 - Dry run on seed 3 (no API call): conservative estimated max of $0.2847 for 50 rows.
+
+## E9 Post-run notes (2026-10-22, after the seed-3 gate)
+- **Draw method deviation from E4 wording.** Seed 3 was drawn with `rng.randrange(TOTAL)` plus skip (rejection of excluded offsets, dev instance_ids, final hashes and duplicates), the same method as seeds 1 and 2 (`labeler/draw_seed3.py`). It was not drawn with `rng.sample` over a precomputed eligible set. The reason is that instance_id exclusion needs each row fetched. Skips: 4 dev ids, 1 final hash.
+- The final-hash file has 50 lines but 49 unique hashes (one duplicate line). Not investigated, since that would require opening the plain list.
+- Cap estimator hardened after the run (see r6/seed3-postmortem.md). Caller sha256 is now c21d5387…9697. E8's e65144a1…1578 remains the hash of the code that produced the seed-3 labels.

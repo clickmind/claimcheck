@@ -22,7 +22,15 @@ def cost(prompt_tokens, completion_tokens, cached_tokens=0):
     i, c, o = PRICE["long" if prompt_tokens >= LONG_CTX else "short"]
     return ((prompt_tokens - cached_tokens) * i + cached_tokens * c + completion_tokens * o) / 1e6
 
-def est_prompt_tokens(text): return len(text) // 3 + 1  # conservative (over-estimates vs ~4 chars/token)
+SAFETY = 1.5
+_RATIO = {"max_tokens_per_byte": None}  # updated from ACTUAL prompt_tokens of each logged call
+def est_prompt_tokens(text):
+    """Pre-call estimate: max(chars/3, bytes * max observed actual tokens/byte * 1.5). Never below the original chars/3 rule."""
+    base = len(text) // 3 + 1; r = _RATIO["max_tokens_per_byte"]
+    return base if r is None else max(base, int(len(text.encode()) * r * SAFETY) + 1)
+def observe(text, prompt_tokens):
+    r = prompt_tokens / max(1, len(text.encode()))
+    if _RATIO["max_tokens_per_byte"] is None or r > _RATIO["max_tokens_per_byte"]: _RATIO["max_tokens_per_byte"] = r
 
 def max_call_cost(user_text): return cost(est_prompt_tokens(PROMPT + user_text), MAX_TOKENS)
 
@@ -81,7 +89,7 @@ def label_row(row, dry_run=False, log=SPEND_LOG, api=call_api):
         except Exception as e:
             if attempt: return dict(offset=rid, error=type(e).__name__, label=None)
             continue
-        log_call(rid, usage, "labeler", log)
+        log_call(rid, usage, "labeler", log); observe(PROMPT + text, usage.get("prompt_tokens", 0))
         d = parse(content)
         if d is not None: return dict(offset=rid, label=d)
     return dict(offset=rid, label=None, parse_failure=True)  # scored as no_claim (E1)
