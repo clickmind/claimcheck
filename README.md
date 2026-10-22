@@ -241,3 +241,64 @@ Only seed 2 met the ≥ 0.95 val guardrail at some epoch. The other three used t
 **Cost.** About $2.04 of E2B CPU time at list price (4 sandboxes, 13,754 sandbox-seconds), which brings the whole counterfactual + count-family series to about $7.20 of the series cap (since raised to a hard $100 E2B cap, per John Golat, Oct 22 2026; model-API spend is tracked separately and is not covered by the cap). Spend to date: see [`docs/spend-ledger.md`](docs/spend-ledger.md). No paid model APIs. Sandbox ids and kill times are in `finetune/count-family/my-sandboxes.txt`.
 
 Reproduce: `python build.py`, then `python run_e2b3.py s0 --skip-zs --train train.jsonl --seed 0` (seeds 0–3), then `python analyze.py`.
+
+## Realistic agent-claim generator (`finetune/realistic-count/`)
+
+**Question:** count-family failed because synthetic → real didn't transfer (0.28). Does a generator that copies how real agent claims look close the gap?
+
+Pre-registered before training: [`PREREGISTRATION.md`](finetune/realistic-count/PREREGISTRATION.md) (commit 284cc22).
+
+**Setup.** `gen_real.py` writes vitest-style pairs that look like real claims: scrubbed paths (`<dir>/`), fractions (`17/17`, `passed <dir>/23`, `N passed of M`), several numbers per line (file count, test count, ms, version, start time), and summaries cut off after the Tests line in 30% of logs. Vitest-style count pairs are back in training: real `count_inflated` items and count counterfactuals from **train sessions**, plus 45 realistic pairs and 24 pairs in other formats. The real test split is held out **by session**, and wrong run (recipe + mirror) stays out of training. Same 4 seeds, same selection rule.
+
+| Seed (epoch) | True-claim acc. (n=38) | Real count catch (n=10) | Wrong-run catch (n=15) | Failed-run catch | Catch all | Catch all, cue-stripped |
+|---|---|---|---|---|---|---|
+| 0 (ep2) | **0.90** | 1.00 | 0.73 | 1.00 | 0.87 | 0.82 |
+| 1 (ep3) | 0.95 | 0.80 | 0.80 | 1.00 | 0.85 | 0.85 |
+| 2 (ep2) | 0.97 | 1.00 | 0.87 | 1.00 | 0.92 | 0.92 |
+| 3 (ep2) | 0.97 | 0.70 | 0.87 | 1.00 | 0.85 | 0.85 |
+| **Mean** | **0.948** | **0.875** | **0.817** | 1.00 | 0.87 | 0.86 |
+
+**Against the pre-registered thresholds (all three needed to pass):**
+- **P1, real count catch ≥ 0.50: passes (0.875).** Last round: 0.28.
+- **P2, wrong-run catch ≥ 0.60: passes (0.82).** Last round: 0.47.
+- **P3, true-claim accuracy ≥ 0.95: fails, narrowly (0.948).** Seed 0 is at 0.90, and its val true-claim accuracy never reached 0.95, so the fallback rule picked it.
+- **So the round does not pass as pre-registered.** Two of three thresholds pass by wide margins, and the third misses by 0.2 points because of one seed.
+
+**Honest read.** Making the synthetic data look like real agent output moved real count catch from 0.28 to 0.88 and wrong-run catch from 0.47 to 0.82, with no stripped-cue collapse (0.87 → 0.86). One caveat matters: real count fakes from *train sessions* are back in training, so the count test is now held out by session, not by recipe. That makes it an easier test than count-family's. The realism of the data is the main lever, but we can't separate "realistic generator" from "real count items back in" in this round. True-claim accuracy is right at the edge, and one seed of four costs it. Small test sets (10 count, 15 wrong-run).
+
+Cost: 4 sandboxes, 12,435 sandbox-seconds, about $1.84 at E2B list price.
+
+## Family transfer: lint/typecheck never seen in training (`finetune/scale-family/`)
+
+**Question:** does claim checking trained only on test-runner claims transfer to lint and typecheck claims? Also, does real counting hold on a 3x larger real count test?
+
+Pre-registered before training: [`PREREGISTRATION.md`](finetune/scale-family/PREREGISTRATION.md) (commit ab915df).
+
+**Why not 1.5B.** The smoke test (`smoke.py`) on the E2B CPU template ran out of memory in fp32 at the 8 GB cap. In bf16 it took 37 s per training step and peaked at 7.6 GB, which works out to about 12 hours per seed. A larger template is refused (8,192 MiB max). Scaling needs GPUs, which this setup doesn't have.
+
+**Arms.** *Main:* no lint/typecheck claims in training or validation. *Control:* the same recipe, with lint/typecheck from train sessions allowed (this equals the realistic-count recipe). **Family-eval** is 25 lint/typecheck items (12 true, 13 false) from sessions in no training set. **Expanded real count** applies the benchmark's count recipe to every eligible real true claim in test sessions: 30 items, up from 10.
+
+**Deviation:** 2 of the 8 runs (main seed 0, control seed 2) were ended by E2B's 1-hour sandbox runtime limit before writing results. Results below are 3 seeds per arm, not 4.
+
+| Run (epoch) | True-claim acc. (n=38) | Expanded real count catch (n=30) | Wrong-run catch | Family-eval true (n=12) | Family-eval catch (n=13) |
+|---|---|---|---|---|---|
+| Main s1 (ep3) | 0.92 | 0.87 | 0.93 | 0.75 | 0.92 |
+| Main s2 (ep3) | 0.95 | 0.93 | 0.93 | 0.83 | 0.92 |
+| Main s3 (ep3) | 0.95 | 0.80 | 0.93 | 0.92 | 0.77 |
+| **Main mean** | **0.94** | **0.87** | **0.93** | **0.83** | **0.87** |
+| Control s0 (ep2) | 0.90 | 0.87 | 0.73 | 0.75 | 0.77 |
+| Control s1 (ep3) | 0.95 | 0.77 | 0.80 | 0.83 | 0.61 |
+| Control s3 (ep1) | 0.92 | 0.73 | 0.93 | 0.75 | 0.92 |
+| **Control mean** | 0.92 | 0.79 | 0.82 | 0.78 | 0.77 |
+
+**Against the pre-registered thresholds**
+- **F1, family transfer (balanced acc. ≥ 0.80 and true-claim ≥ 0.90): fails.** Balanced accuracy passes (0.85), but true-claim accuracy on lint/typecheck is 0.83: about 2 of 12 true lint claims get flagged per seed.
+- **F2, transfer gap within 10 points of control: passes.** The main arm (0.85) is actually above control (0.77). Seeing lint claims in training didn't help on this small set.
+- **C1, expanded real count catch ≥ 0.50 at true-claim ≥ 0.95: fails, narrowly.** Count catch is strong (0.87 on 30 items), but true-claim accuracy is 0.94.
+
+**Honest read.** Catching fakes transfers to a claim family the model never saw: 0.87 catch on lint/typecheck fakes, with no lint examples in training. Trusting true claims transfers less well (0.83). The model is more suspicious of unfamiliar evidence, which is the safer way to fail. On the larger real count test (30 items), the realistic generator's count catch holds at 0.79–0.93. The 0.95 true-claim bar was missed again by one or two items. Across the last two rounds, this is the consistent picture: real catch is now high, and the true-claim guardrail sits at 0.93–0.95. The family set is tiny (12 / 13), so the CIs are wide (see `results.json`).
+
+**Cost:** 8 training + 3 smoke sandboxes logged at 19,738 s, about $2.92, plus about $0.74–$1.10 for the 2 runs ended by the runtime limit (exact duration unknown).
+
+## Next: ClaimCheck World (pre-registered, not run)
+[`finetune/world/PREREGISTRATION.md`](finetune/world/PREREGISTRATION.md) (commit 36997d8): real tiny vitest/pytest repos run in E2B with injected chaos (flaky tests, skipped files, timeouts, truncated logs, partial reruns, wrong cwd, missing env). A local model writes the claim, and labels come from the actual reporter output. Two hypotheses: World data beats the synthetic generator on held-out real logs, and a checker-driven fix loop raises the share of episodes that end with a true claim by ≥ 10 points.

@@ -1,0 +1,266 @@
+[
+{
+"id": "rsyn-4-0-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-0-p",
+"margin": 3.8074873853474855
+},
+{
+"id": "rsyn-4-0-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-0-n",
+"margin": -8.105085112387314
+},
+{
+"id": "rsyn-4-1-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-1-p",
+"margin": 4.336387851275504
+},
+{
+"id": "rsyn-4-1-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-1-n",
+"margin": -7.591074132942595
+},
+{
+"id": "rsyn-4-2-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-2-p",
+"margin": 5.613567586988211
+},
+{
+"id": "rsyn-4-2-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-2-n",
+"margin": -8.854683022655081
+},
+{
+"id": "rsyn-4-3-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-3-p",
+"margin": 3.86462015286088
+},
+{
+"id": "rsyn-4-3-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-3-n",
+"margin": -8.04312682733871
+},
+{
+"id": "rsyn-4-4-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-4-p",
+"margin": 4.865869451314211
+},
+{
+"id": "rsyn-4-4-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-4-n",
+"margin": -8.338291352323722
+},
+{
+"id": "rsyn-4-5-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-5-p",
+"margin": 4.498682094737887
+},
+{
+"id": "rsyn-4-5-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-5-n",
+"margin": -8.857038075220771
+},
+{
+"id": "rsyn-4-6-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-6-p",
+"margin": 4.256769116036594
+},
+{
+"id": "rsyn-4-6-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-6-n",
+"margin": 0.6487846672534943
+},
+{
+"id": "rsyn-4-7-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-7-p",
+"margin": 2.578395925462246
+},
+{
+"id": "rsyn-4-7-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-7-n",
+"margin": -7.479732549516484
+},
+{
+"id": "rsyn-4-7-f",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-7-f",
+"margin": -2.3290405198931694
+},
+{
+"id": "rsyn-4-8-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-8-p",
+"margin": 4.26857750210911
+},
+{
+"id": "rsyn-4-8-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-8-n",
+"margin": -7.107294108718634
+},
+{
+"id": "rsyn-4-9-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-9-p",
+"margin": 2.8022556826472282
+},
+{
+"id": "rsyn-4-9-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-9-n",
+"margin": -6.91345996176824
+},
+{
+"id": "rsyn-4-10-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-10-p",
+"margin": 3.256338059902191
+},
+{
+"id": "rsyn-4-10-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-10-n",
+"margin": -8.550417038495652
+},
+{
+"id": "rsyn-4-11-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-11-p",
+"margin": 2.91282282397151
+},
+{
+"id": "rsyn-4-11-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-11-n",
+"margin": -8.08605550287757
+},
+{
+"id": "rsyn-4-11-f",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-11-f",
+"margin": -0.2513236999511719
+},
+{
+"id": "rsyn-4-12-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-12-p",
+"margin": 4.102239528670907
+},
+{
+"id": "rsyn-4-12-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-12-n",
+"margin": -8.531616630672943
+},
+{
+"id": "rsyn-4-13-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-13-p",
+"margin": 3.14031595364213
+},
+{
+"id": "rsyn-4-13-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-13-n",
+"margin": -9.111160566913895
+},
+{
+"id": "rsyn-4-14-p",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "supported",
+"session": "rsyn-4-14-p",
+"margin": 3.3611487559974194
+},
+{
+"id": "rsyn-4-14-n",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-14-n",
+"margin": -7.4081690174061805
+},
+{
+"id": "rsyn-4-14-f",
+"origin": "rsyn:count",
+"kind": "test",
+"gold": "unsupported",
+"session": "rsyn-4-14-f",
+"margin": 1.8859444558620453
+}
+]

@@ -1,0 +1,330 @@
+[
+{
+"id": "430e0a135d",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s075",
+"margin": 2.0621452927589417
+},
+{
+"id": "577dbf5598",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s022",
+"margin": 2.1701203286647797
+},
+{
+"id": "90df68709e",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s022",
+"margin": 1.9039860963821411
+},
+{
+"id": "9a98506aa7-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s003",
+"margin": -2.051843672990799
+},
+{
+"id": "9117ab4298-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s084",
+"margin": -1.6906757801771164
+},
+{
+"id": "5d992af731",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s006",
+"margin": 1.8338260650634766
+},
+{
+"id": "90df68709e-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s022",
+"margin": -6.528879384044558
+},
+{
+"id": "2614be6955-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s037",
+"margin": -5.347997596487403
+},
+{
+"id": "577dbf5598-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s022",
+"margin": -3.171066265553236
+},
+{
+"id": "cca8ff65fa-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s020",
+"margin": -4.53551094699651
+},
+{
+"id": "a3efd87830-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s004",
+"margin": -6.815931376069784
+},
+{
+"id": "a8a6efb21f-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s055",
+"margin": -1.8317336738109589
+},
+{
+"id": "9a98506aa7",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s003",
+"margin": 0.871421754360199
+},
+{
+"id": "a3efd87830",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s004",
+"margin": 2.080469124019146
+},
+{
+"id": "ea20eb4d1b-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s080",
+"margin": -6.589244620176032
+},
+{
+"id": "87073b220b-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s004",
+"margin": 1.9230423271656036
+},
+{
+"id": "cca8ff65fa",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s020",
+"margin": -2.9333992302417755
+},
+{
+"id": "430e0a135d-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s075",
+"margin": -6.918155503226444
+},
+{
+"id": "ea20eb4d1b",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s080",
+"margin": 2.1894799396395683
+},
+{
+"id": "f9f35d7ddd-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s003",
+"margin": 1.074520081281662
+},
+{
+"id": "3751288ff3-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s049",
+"margin": -6.734273705398664
+},
+{
+"id": "9117ab4298",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s084",
+"margin": 1.285064697265625
+},
+{
+"id": "77ba68a20d",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s035",
+"margin": 2.146154411137104
+},
+{
+"id": "7f48cf1879",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s067",
+"margin": 2.085477903485298
+},
+{
+"id": "2614be6955",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s037",
+"margin": 2.0234183818101883
+},
+{
+"id": "5b11ace4d2",
+"origin": "real",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s070",
+"margin": -1.9779433757066727
+},
+{
+"id": "d485b2e385",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s069",
+"margin": 1.571905180811882
+},
+{
+"id": "a8a6efb21f",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s055",
+"margin": 0.28861236572265625
+},
+{
+"id": "3751288ff3",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s049",
+"margin": 1.901952713727951
+},
+{
+"id": "356b404983",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s006",
+"margin": 1.875080019235611
+},
+{
+"id": "9121a09aa3",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s025",
+"margin": -2.552410066127777
+},
+{
+"id": "9121a09aa3-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s025",
+"margin": -2.0168132930994034
+},
+{
+"id": "5d992af731-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s006",
+"margin": 1.8491076976060867
+},
+{
+"id": "77ba68a20d-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s035",
+"margin": 0.8406333327293396
+},
+{
+"id": "f9f35d7ddd",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s003",
+"margin": 1.2490158379077911
+},
+{
+"id": "b5c7258e12",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s075",
+"margin": -2.4926491156220436
+},
+{
+"id": "b5c7258e12-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s075",
+"margin": -6.467862934106961
+},
+{
+"id": "d485b2e385-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s069",
+"margin": -2.756553642451763
+},
+{
+"id": "356b404983-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s006",
+"margin": -6.876695457380265
+},
+{
+"id": "7f48cf1879-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s067",
+"margin": -1.104915589094162
+},
+{
+"id": "87073b220b",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s004",
+"margin": 2.1749496832489967
+}
+]

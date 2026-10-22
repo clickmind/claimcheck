@@ -1,0 +1,330 @@
+[
+{
+"id": "430e0a135d",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s075",
+"margin": 2.3205966502428055
+},
+{
+"id": "577dbf5598",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s022",
+"margin": 3.106880147010088
+},
+{
+"id": "90df68709e",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s022",
+"margin": 2.779945343732834
+},
+{
+"id": "9a98506aa7-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s003",
+"margin": 1.010616272687912
+},
+{
+"id": "9117ab4298-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s084",
+"margin": 0.1361255645751953
+},
+{
+"id": "5d992af731",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s006",
+"margin": 3.034196812659502
+},
+{
+"id": "90df68709e-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s022",
+"margin": -6.0558014484122396
+},
+{
+"id": "2614be6955-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s037",
+"margin": -5.466226597316563
+},
+{
+"id": "577dbf5598-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s022",
+"margin": -1.878122329711914
+},
+{
+"id": "cca8ff65fa-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s020",
+"margin": -4.696605865843594
+},
+{
+"id": "a3efd87830-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s004",
+"margin": -5.849599841982126
+},
+{
+"id": "a8a6efb21f-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s055",
+"margin": 0.6338443756103516
+},
+{
+"id": "9a98506aa7",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s003",
+"margin": 1.419641450047493
+},
+{
+"id": "a3efd87830",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s004",
+"margin": 2.6680717766284943
+},
+{
+"id": "ea20eb4d1b-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s080",
+"margin": -6.521490148501471
+},
+{
+"id": "87073b220b-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s004",
+"margin": 2.399141401052475
+},
+{
+"id": "cca8ff65fa",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s020",
+"margin": 0.11426734924316406
+},
+{
+"id": "430e0a135d-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s075",
+"margin": -6.568014215445146
+},
+{
+"id": "ea20eb4d1b",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s080",
+"margin": 2.691085807979107
+},
+{
+"id": "f9f35d7ddd-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s003",
+"margin": 2.879274420440197
+},
+{
+"id": "3751288ff3-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s049",
+"margin": -5.880374964792281
+},
+{
+"id": "9117ab4298",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s084",
+"margin": 2.1895580291748047
+},
+{
+"id": "77ba68a20d",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s035",
+"margin": 3.3348274752497673
+},
+{
+"id": "7f48cf1879",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s067",
+"margin": 3.338224343955517
+},
+{
+"id": "2614be6955",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s037",
+"margin": 2.9557915553450584
+},
+{
+"id": "5b11ace4d2",
+"origin": "real",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s070",
+"margin": 0.14627647399902344
+},
+{
+"id": "d485b2e385",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s069",
+"margin": 2.76751895993948
+},
+{
+"id": "a8a6efb21f",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s055",
+"margin": 1.2071152329444885
+},
+{
+"id": "3751288ff3",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s049",
+"margin": 3.0765055790543556
+},
+{
+"id": "356b404983",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s006",
+"margin": 2.358057089149952
+},
+{
+"id": "9121a09aa3",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s025",
+"margin": 0.8146667778491974
+},
+{
+"id": "9121a09aa3-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s025",
+"margin": 0.038158416748046875
+},
+{
+"id": "5d992af731-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s006",
+"margin": 3.220760352909565
+},
+{
+"id": "77ba68a20d-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s035",
+"margin": 1.8285198211669922
+},
+{
+"id": "f9f35d7ddd",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s003",
+"margin": 2.160974472761154
+},
+{
+"id": "b5c7258e12",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s075",
+"margin": -1.047109603881836
+},
+{
+"id": "b5c7258e12-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s075",
+"margin": -6.319906433112919
+},
+{
+"id": "d485b2e385-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s069",
+"margin": 0.4446907043457031
+},
+{
+"id": "356b404983-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s006",
+"margin": -6.331359766423702
+},
+{
+"id": "7f48cf1879-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s067",
+"margin": 0.15804672241210938
+},
+{
+"id": "87073b220b",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s004",
+"margin": 2.982522938400507
+}
+]

@@ -8,14 +8,15 @@ def boot(rows,want,B=2000):
 def c(rows,want): return {'v':round(acc(rows,want),3),'ci':boot(rows,want),'n':len(rows)}
 P=lambda rows:[r for r in rows if r['gold']=='supported'];N=lambda rows:[r for r in rows if r['gold']!='supported']
 out={}
-for d in sorted(glob.glob(f'{H}/out-s*')):
+FE=set(json.load(open(f'{H}/family-eval-ids.json')))
+for d in sorted(glob.glob(f'{H}/out-[mc]*')):
   L=lambda e,k:json.load(open(f'{d}/pred-ep{e}-{k}.json'))
   eps=[e for e in (1,2,3) if os.path.exists(f'{d}/pred-ep{e}-val.json')]
   vs={e:(acc(P(L(e,'val')),'supported'),(acc(P(L(e,'val')),'supported')+acc(N(L(e,'val')),'unsupported'))/2) for e in eps}
   ok=[e for e in eps if vs[e][0]>=.95];sel=max(ok,key=lambda e:(vs[e][1],-e)) if ok else max(eps,key=lambda e:(vs[e][0],-e))
   o={'val_by_epoch':{e:[round(x,3) for x in vs[e]] for e in eps},'selected_epoch':sel,'guardrail_met_on_val':bool(ok)}
   for e in eps:
-    t=L(e,'test');tm=L(e,'test-masked');h=L(e,'syn_heldfmt');tf=L(e,'syn_trainfmt')
+    fa=[r for r in L(e,'family') if r['id'] in FE];xc=L(e,'xcount');t=L(e,'test');tm=L(e,'test-masked');h=L(e,'syn_heldfmt');tf=L(e,'syn_trainfmt')
     o[f'ep{e}']={'true_acc':c([r for r in t if r['origin']=='real' and r['gold']=='supported'],'supported'),
      'catch_count':c([r for r in t if r['origin']=='perturbed:count_inflated'],'unsupported'),
      'catch_swap':c([r for r in t if r['origin']=='perturbed:evidence_swapped'],'unsupported'),
@@ -23,10 +24,10 @@ for d in sorted(glob.glob(f'{H}/out-s*')):
      'catch_all':c(N(t),'unsupported'),'catch_all_masked':c(N(tm),'unsupported'),
      'true_acc_masked':c([r for r in tm if r['origin']=='real' and r['gold']=='supported'],'supported'),
      'heldfmt_catch':c(N(h),'unsupported'),'heldfmt_true':c(P(h),'supported'),
-     'trainfmt_catch':c(N(tf),'unsupported'),'trainfmt_true':c(P(tf),'supported')}
+     'trainfmt_catch':c(N(tf),'unsupported'),'fam_true':c(P(fa),'supported'),'fam_catch':c(N(fa),'unsupported'),'xcount':c(xc,'unsupported'),'trainfmt_true':c(P(tf),'supported')}
   out[os.path.basename(d)[4:]]=o
 json.dump(out,open(f'{H}/results.json','w'),indent=1)
-keys=['true_acc','catch_count','heldfmt_catch','heldfmt_true','catch_swap','catch_fail','catch_all','catch_all_masked','trainfmt_catch']
+keys=['true_acc','xcount','catch_count','catch_swap','fam_true','fam_catch','catch_all','catch_all_masked']
 print('seed sel '+' '.join(f'{k:>14s}' for k in keys))
 sel={}
 for s,o in out.items():

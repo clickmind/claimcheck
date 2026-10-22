@@ -1,0 +1,330 @@
+[
+{
+"id": "430e0a135d",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s075",
+"margin": 0.2964954376220703
+},
+{
+"id": "577dbf5598",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s022",
+"margin": -1.0572300255298615
+},
+{
+"id": "90df68709e",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s022",
+"margin": -0.8567314445972443
+},
+{
+"id": "9a98506aa7-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s003",
+"margin": -2.6942348703742027
+},
+{
+"id": "9117ab4298-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s084",
+"margin": -2.3982905596494675
+},
+{
+"id": "5d992af731",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s006",
+"margin": -0.011474609375
+},
+{
+"id": "90df68709e-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s022",
+"margin": -6.970275753643364
+},
+{
+"id": "2614be6955-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s037",
+"margin": -5.819936707150191
+},
+{
+"id": "577dbf5598-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s022",
+"margin": -2.1177767738699913
+},
+{
+"id": "cca8ff65fa-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s020",
+"margin": -5.437957691028714
+},
+{
+"id": "a3efd87830-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s004",
+"margin": -7.0214041555300355
+},
+{
+"id": "a8a6efb21f-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s055",
+"margin": -2.7441061958670616
+},
+{
+"id": "9a98506aa7",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s003",
+"margin": -1.1738243699073792
+},
+{
+"id": "a3efd87830",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s004",
+"margin": 0.5440406799316406
+},
+{
+"id": "ea20eb4d1b-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s080",
+"margin": -7.565902668517083
+},
+{
+"id": "87073b220b-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s004",
+"margin": -0.10571479797363281
+},
+{
+"id": "cca8ff65fa",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s020",
+"margin": -1.7148952335119247
+},
+{
+"id": "430e0a135d-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s075",
+"margin": -7.105476211756468
+},
+{
+"id": "ea20eb4d1b",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s080",
+"margin": -0.03572273254394531
+},
+{
+"id": "f9f35d7ddd-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s003",
+"margin": -0.7720318138599396
+},
+{
+"id": "3751288ff3-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s049",
+"margin": -6.914474418619648
+},
+{
+"id": "9117ab4298",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s084",
+"margin": -1.0398636162281036
+},
+{
+"id": "77ba68a20d",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s035",
+"margin": -0.2202320098876953
+},
+{
+"id": "7f48cf1879",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s067",
+"margin": -0.6989307701587677
+},
+{
+"id": "2614be6955",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s037",
+"margin": 0.2465343475341797
+},
+{
+"id": "5b11ace4d2",
+"origin": "real",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s070",
+"margin": -1.560804396867752
+},
+{
+"id": "d485b2e385",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s069",
+"margin": -1.089210569858551
+},
+{
+"id": "a8a6efb21f",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s055",
+"margin": -2.208458013832569
+},
+{
+"id": "3751288ff3",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s049",
+"margin": -0.3776435852050781
+},
+{
+"id": "356b404983",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s006",
+"margin": 0.05908966064453125
+},
+{
+"id": "9121a09aa3",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s025",
+"margin": -2.173316963016987
+},
+{
+"id": "9121a09aa3-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s025",
+"margin": -1.7400054782629013
+},
+{
+"id": "5d992af731-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s006",
+"margin": -0.1986560821533203
+},
+{
+"id": "77ba68a20d-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s035",
+"margin": -1.7350273430347443
+},
+{
+"id": "f9f35d7ddd",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s003",
+"margin": -0.25261688232421875
+},
+{
+"id": "b5c7258e12",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s075",
+"margin": -0.9322967529296875
+},
+{
+"id": "b5c7258e12-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s075",
+"margin": -6.617801710730419
+},
+{
+"id": "d485b2e385-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s069",
+"margin": -2.2995739057660103
+},
+{
+"id": "356b404983-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s006",
+"margin": -7.219974741572514
+},
+{
+"id": "7f48cf1879-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s067",
+"margin": -1.6170558631420135
+},
+{
+"id": "87073b220b",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s004",
+"margin": 0.6087570786476135
+}
+]

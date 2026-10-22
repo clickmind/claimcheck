@@ -1,0 +1,330 @@
+[
+{
+"id": "430e0a135d",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s075",
+"margin": 3.0109671354293823
+},
+{
+"id": "577dbf5598",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s022",
+"margin": 4.357156957499683
+},
+{
+"id": "90df68709e",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s022",
+"margin": 3.6626282148063183
+},
+{
+"id": "9a98506aa7-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s003",
+"margin": -1.0558090507984161
+},
+{
+"id": "9117ab4298-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s084",
+"margin": -1.4308967292308807
+},
+{
+"id": "5d992af731",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s006",
+"margin": 3.768953375518322
+},
+{
+"id": "90df68709e-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s022",
+"margin": -6.945198118686676
+},
+{
+"id": "2614be6955-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s037",
+"margin": -6.98731604963541
+},
+{
+"id": "577dbf5598-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s022",
+"margin": -0.7955131232738495
+},
+{
+"id": "cca8ff65fa-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s020",
+"margin": -7.6334628951735795
+},
+{
+"id": "a3efd87830-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s004",
+"margin": -7.017148850020021
+},
+{
+"id": "a8a6efb21f-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s055",
+"margin": -0.7738667130470276
+},
+{
+"id": "9a98506aa7",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s003",
+"margin": 2.674564279615879
+},
+{
+"id": "a3efd87830",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s004",
+"margin": 3.7517643682658672
+},
+{
+"id": "ea20eb4d1b-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s080",
+"margin": -7.313554639928043
+},
+{
+"id": "87073b220b-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s004",
+"margin": 3.544277148321271
+},
+{
+"id": "cca8ff65fa",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s020",
+"margin": -2.022294968366623
+},
+{
+"id": "430e0a135d-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s075",
+"margin": -6.9809149680659175
+},
+{
+"id": "ea20eb4d1b",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s080",
+"margin": 2.1056022942066193
+},
+{
+"id": "f9f35d7ddd-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s003",
+"margin": 3.44442356005311
+},
+{
+"id": "3751288ff3-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s049",
+"margin": -7.574392303824425
+},
+{
+"id": "9117ab4298",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s084",
+"margin": 2.6171913519501686
+},
+{
+"id": "77ba68a20d",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s035",
+"margin": 4.138032773509622
+},
+{
+"id": "7f48cf1879",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s067",
+"margin": 3.7452317140996456
+},
+{
+"id": "2614be6955",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s037",
+"margin": 3.8571529630571604
+},
+{
+"id": "5b11ace4d2",
+"origin": "real",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s070",
+"margin": -0.2814483642578125
+},
+{
+"id": "d485b2e385",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s069",
+"margin": 2.5713119730353355
+},
+{
+"id": "a8a6efb21f",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s055",
+"margin": 3.008867148309946
+},
+{
+"id": "3751288ff3",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s049",
+"margin": 3.481693184003234
+},
+{
+"id": "356b404983",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s006",
+"margin": 2.705398589372635
+},
+{
+"id": "9121a09aa3",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s025",
+"margin": -0.7242183685302734
+},
+{
+"id": "9121a09aa3-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s025",
+"margin": -0.6431254744529724
+},
+{
+"id": "5d992af731-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s006",
+"margin": 3.9661120623350143
+},
+{
+"id": "77ba68a20d-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s035",
+"margin": 2.6496543511748314
+},
+{
+"id": "f9f35d7ddd",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s003",
+"margin": 2.8568801656365395
+},
+{
+"id": "b5c7258e12",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s075",
+"margin": -4.5432870564982295
+},
+{
+"id": "b5c7258e12-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s075",
+"margin": -7.40238370699808
+},
+{
+"id": "d485b2e385-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s069",
+"margin": -0.24172019958496094
+},
+{
+"id": "356b404983-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s006",
+"margin": -6.914087436161935
+},
+{
+"id": "7f48cf1879-swap",
+"origin": "perturbed:evidence_swapped",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s067",
+"margin": 0.07479476928710938
+},
+{
+"id": "87073b220b",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s004",
+"margin": 3.559185031801462
+}
+]

@@ -3,3 +3,5 @@ data/raw.json
 data/v1/claims.jsonl
 finetune/counterfactual/logs/
 finetune/count-family/logs/
+finetune/realistic-count/logs/
+finetune/scale-family/logs/

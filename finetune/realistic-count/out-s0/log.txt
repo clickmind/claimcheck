@@ -1,0 +1,10 @@
+The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+zeroshot done 0
+{'epoch': 1, 'train_loss': 0.7762778341246304} 603
+evaluated epoch 1 963
+{'epoch': 2, 'train_loss': 0.35074713907641125} 1559
+evaluated epoch 2 1909
+{'epoch': 3, 'train_loss': 0.09961097472827532} 2505
+evaluated epoch 3 2854
+done 2854
