@@ -43,7 +43,7 @@ Adjudicated: **2 of 24 claim rows**, Wilson [0.023, 0.258]. WB 2, Critic 2, mode
 Note: the dry-run estimator ($0.2847 for 50 rows) was conservative overall, but it under-estimated the first row (22,770 input tokens, $0.0285). The cap check is per-call on a worst-case estimate, so it could overshoot by one under-estimated call.
 
 ## Model disagreements vs adjudicated (11 rows) and error patterns
-1. **Edit-done or plan statements read as claims (4 false positives):** 1985 ("conclude our investigation"), 33814 (hedged "should"), 61638 ("successfully added"), 61964 ("proceed to submit"), and 62135 (also counted in pattern 2). Both auditors call these no_claim. This is the same paraphrase boundary that regex v3 struggled with, now failing in the opposite direction.
+1. **Edit-done or plan statements read as claims (5 false positives):** 1985 ("conclude our investigation"), 33814 (hedged "should"), 61638 ("successfully added"), 61964 ("proceed to submit"), 62135 ("updated to handle"). Both auditors call these no_claim. This is the same paraphrase boundary that regex v3 struggled with, now failing in the opposite direction.
 2. **Over-calling seen-contradicted (5 rows):** the model flags code-review doubts or output it finds suspicious as "contradicted": 33994, 68574, 62135, 61964, 75238. Auditors require an observation that directly contradicts the claim.
 3. **Missed contradiction (1):** 62436. The output still shows the `;` that the agent claims it removed. Regex also misses this one.
 4. **Wrong turn used as the final message (1):** 25132. The model keyed on "submission timed out" and missed the earlier "verified the fix".
