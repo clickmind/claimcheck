@@ -1,36 +1,31 @@
-# ClaimCheck spend ledger (draft, 2026-10-22 ~08:20 CT)
-The **hard $100 E2B cap** (John via Cos, Oct 22; was $40) covers **E2B sandbox spend only**. xAI model-API spend is a separate line, outside the cap.
-E2B rate: R3's own figure, $2.04 / 13,754 s = **$0.0001483/s (≈$0.53 per sandbox-hour)**. Seconds come from the kill lines in each `my-sandboxes.txt`.
+# ClaimCheck spend ledger (updated 2026-10-22 ~09:05 CT)
+The **hard $100 E2B cap** (John via Cos, Oct 22) covers **E2B sandbox spend only**. xAI model-API spend is a separate line, outside the cap.
+Rate: $0.0001483/s (≈$0.53 per sandbox-hour), from R3's own $2.04 / 13,754 s at list price.
+**Every E2B figure here is an estimate from logged seconds at list price. The actual total is in the E2B Console.**
 
 ## E2B headline
-- **Logged so far (from the sandbox logs): $7.31.**
-- **Worst-case remaining: $100 − $7.31 − $8.10 (13 open R4 sandboxes × 4,200 s) = $84.59**, before the UNKNOWN rounds below.
-- **Reserve: $10. Spend gate (worst case − reserve): $74.59**, before the UNKNOWN rounds. No round starts if its ceiling exceeds what is left of the gate.
-- **Total E2B spend: unknown until R4 pulls E2B's own usage data.**
-- $8.18 was reported to the Scribe; **source unverified**. It is $0.87 above the logged $7.31. Possible causes: the UNKNOWN rounds, or accrual on open sandboxes. Not confirmed.
+- **Series estimate: $13.4–14.5 at list price** (derivation below). **Worst case used for gating: $14.50.**
+- **Reserve: $10. Gate for new rounds: $100 − $14.50 − $10 = $75.50.**
+- All sandboxes have a kill line (43 created / 43 killed across 5 logs, checked at origin/main 8079320). None are open, so the open-sandbox worst-case line is gone.
+- The $8.18 figure reported to the Scribe has an unverified source and isn't used.
 
-## E2B: logged
-| Round | Sandboxes (killed) | Seconds | Rate $/s | Cost | Source file |
-|---|---|---|---|---|---|
-| First LoRA fine-tune (d1e34ff) | UNKNOWN | UNKNOWN | - | **UNKNOWN** | no sandbox log located (not verified) |
-| Left-out-recipe round (96f788c) | UNKNOWN | UNKNOWN | - | **UNKNOWN** | no sandbox log located (not verified) |
-| Counterfactual (fa2aed9) | 22 | 34,980 | 0.0001483 | $5.19 (README ~$5.20) | finetune/counterfactual/my-sandboxes.txt |
-| Count family R3 (724de33) | 4 | 13,754 | 0.0001483 | $2.04 | finetune/count-family/my-sandboxes.txt |
-| 1.5B smoke tests | 3 | 529 | 0.0001483 | $0.08 | finetune/scale-family/my-sandboxes.txt |
-| World probe | 1 | 12 | 0.0001483 | $0.00 | finetune/world/my-sandboxes.txt |
-| **Logged so far** | 30 | 49,275 | | **$7.31** | |
-
-## E2B: pending (no kill line; counted at the 4,200 s force-stop)
-| Folder | Open | Created (CT) | Worst-case s | Worst-case $ |
+## E2B by round
+| Round | Sandboxes | Seconds | Cost | Basis / source |
 |---|---|---|---|---|
-| realistic-count | 4 | 07:29 | 16,800 | $2.49 |
-| scale-family m0–3, c0–3 | 8 | 07:44 | 33,600 | $4.98 |
-| world smoke | 1 | 08:05 | 4,200 | $0.62 |
-| **Pending worst case** | 13 | | 54,600 | **$8.10** |
+| First LoRA fine-tune (d1e34ff) | 1 | ≥872 | **≥$0.13** | lower bound: script runtime, `finetune/out-q05/meta.json` "seconds" (no sandbox log) |
+| Left-out-recipe + 2 seeds (96f788c) | 5 | ≥3,344 | **≥$0.50** | lower bound: script runtimes 803+604+577+658+702 s, `finetune/out-{loro-count,loro-fail,loro-swap,seed1,seed2}/meta.json` (no sandbox log) |
+| Counterfactual (fa2aed9) | 22 | 34,980 | $5.19 | `finetune/counterfactual/my-sandboxes.txt` |
+| Count family R3 (724de33) | 4 | 13,754 | $2.04 | `finetune/count-family/my-sandboxes.txt` |
+| Realistic count R4 (00329d1) | 4 | 12,435 | $1.84 | `finetune/realistic-count/my-sandboxes.txt` |
+| Family transfer + 1.5B smoke tests: 9 logged runs (6 training, 3 smoke) | 9 | 19,738 | $2.93 | `finetune/scale-family/my-sandboxes.txt` |
+| Family transfer m0, c2 (ended by E2B 1 h limit) | 2 | UNKNOWN, ≤~3,600 each | $0.74–1.10 (README) | kill lines say "sandbox not found"; README @00329d1 |
+| World probe | 1 | 12 | $0.00 | `finetune/world/my-sandboxes.txt` |
+| World smoke (orphaned, killed by id) | 1 | ~458 (08:05:45→08:13:23) | ~$0.07 | timestamps in `finetune/world/my-sandboxes.txt`, no "after Ns" |
+| **Sum** | 49 | | **≈ $13.44–13.80** | lower bounds included at their floor |
+The 1.5B smoke tests (3 runs, 529 s, $0.08) are inside the family-transfer row. The $14.50 worst case adds margin over $13.80 for the two lower-bound rows and unbilled startup time.
 
 ## xAI model API (outside the cap)
-- **$6.36** (per John via Cos, 08:17 CT).
-- The README's own "about" figures sum to ≈$6.59: v1.2 $1.54, v1.1 ×2 ~$3.40, v1 ~$1.65. On top of that, the v1 stalled attempt is **UNKNOWN** ("unlogged spend").
+- **$6.36** (per John via Cos, 08:17 CT). The README's "about" figures sum to ≈$6.59, and the v1 stalled attempt is **UNKNOWN**.
 
-## Reconciliation with the Scribe's ~$13.8
-$7.31 E2B + $6.36 API = **$13.67** ≈ $13.8. The Scribe's figure combines both lines. Only E2B counts against the $100 cap.
+## Reconciliation
+The Scribe's earlier ~$13.8 was E2B + API combined ($7.31 + $6.36, before R4 posted). It's superseded by the estimate above.
