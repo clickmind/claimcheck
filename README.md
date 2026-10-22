@@ -207,3 +207,37 @@ The hypothesis, metrics and pass/fail thresholds were committed before any run: 
 **Cost.** About $5.20 of E2B CPU sandbox time at list price (22 sandboxes, ~35K sandbox-seconds, including one batch of 8 lost to a client timeout bug). No paid model API calls. Every sandbox id this experiment created, and when it was killed, is in `finetune/counterfactual/my-sandboxes.txt`.
 
 Reproduce: `python augment.py`, then e.g. `python run_e2b2.py cf-loro-swap-s0 --skip-zs --train data-swap.jsonl --seed 0` (baseline: `--exclude perturbed:evidence_swapped` with no `--train`; add `--rationale` for H4), then `python analyze_cf.py`.
+
+## Count family across log formats (`finetune/count-family/`)
+
+**Question:** can synthetic count-mismatch pairs in many log formats teach the 0.5B model to check numbers, with true-claim accuracy held at ≥ 0.95 by early stopping?
+
+Pre-registered before training: [`PREREGISTRATION.md`](finetune/count-family/PREREGISTRATION.md) (commit 5a14571).
+
+**Setup.** `gen_count.py` makes minimal pairs: the same log, with a claim stating the true count or a wrong one, with distractor numbers in the log. Train formats are pytest, jest, go test and cargo (80 pairs). JUnit XML and a custom key=value format are never trained (40 pairs). **Held out of training:** real vitest inflated counts *and* real wrong-run claims, plus their counterfactual mirrors. Training uses 400 balanced items. Checkpoint selection uses only a validation set from 11 held-aside train sessions plus in-format synthetic pairs. The rule: best val balanced accuracy among epochs with val true-claim accuracy ≥ 0.95, otherwise highest val true-claim accuracy. 4 seeds.
+
+**Selected-epoch results per seed (real test: 38 true claims; 10 count / 15 wrong-run / 13 failed-run false claims)**
+
+| Seed (epoch) | True-claim acc. | Real count catch | Held-out format catch / true acc. | Wrong-run catch | Catch all | Catch all, cue-stripped |
+|---|---|---|---|---|---|---|
+| 0 (ep1) | 0.97 | 0.80 | 1.00 / 0.93 | 0.73 | 0.82 | 0.92 |
+| 1 (ep3) | 1.00 | 0.10 | 1.00 / 0.95 | 0.27 | 0.46 | 0.87 |
+| 2 (ep2) | 1.00 | 0.00 | 1.00 / 0.97 | 0.33 | 0.49 | 0.49 |
+| 3 (ep2) | 1.00 | 0.20 | 1.00 / 0.97 | 0.53 | 0.59 | 0.85 |
+| **Mean** | **0.99** | **0.28** | **1.00 / 0.96** | **0.47** | 0.59 | 0.78 |
+
+Only seed 2 met the ≥ 0.95 val guardrail at some epoch. The other three used the fallback rule. Seed 0 would have collapsed at later epochs (true-claim accuracy 0.21 and 0.13 at epochs 2–3), so the selection rule mattered. Per-epoch numbers and CIs are in `results.json`.
+
+**Against the pre-registered thresholds**
+- **H1, real count transfer ≥ 0.50: fails (0.28).** One seed reached 0.80, and the others got 0.00–0.20.
+- **H2, held-out formats (catch ≥ 0.80, true ≥ 0.90): passes (1.00 / 0.96).** The model counts correctly in JUnit XML and custom logs it never saw.
+- **H3, guardrail (mean ≥ 0.95, no seed < 0.90): passes (0.99; seeds 0.97–1.00).**
+- **H4, wrong run still ≥ 0.60: fails (0.47).** It's lower than last round (0.87 / 0.60), when count counterfactuals in vitest format were in training.
+- **H5, cue-stripped drop ≤ 10 points: passes.** Catch went *up* (0.59 → 0.78), so stripping cues makes the model more suspicious rather than less. That isn't a clean "no cue reliance" result.
+- **H6, seed spread ≤ 10 points: passes** (3 points).
+
+**Honest read.** Counting does generalize across synthetic formats: 1.00 catch on two formats never trained. But it barely transfers to the real vitest claims from my agents' logs (0.28). The synthetic task is learnable, and the gap is synthetic → real, not format → format. Real claims are messier: fractions like `<dir>/23`, several numbers per line, partial summaries. The guardrail held at ~0.99 true-claim accuracy, but the selected checkpoints are conservative and catch fewer fakes overall (0.59 vs 0.97 for last round's full training). Wrong-run transfer also got worse without vitest-format counterfactuals in training. Four seeds and 10–15 items per recipe: early signals only.
+
+**Cost.** About $2.04 of E2B CPU time at list price (4 sandboxes, 13,754 sandbox-seconds), which brings the whole counterfactual + count-family series to about $7.20 of the $10 cap. No paid model APIs. Sandbox ids and kill times are in `finetune/count-family/my-sandboxes.txt`.
+
+Reproduce: `python build.py`, then `python run_e2b3.py s0 --skip-zs --train train.jsonl --seed 0` (seeds 0–3), then `python analyze.py`.

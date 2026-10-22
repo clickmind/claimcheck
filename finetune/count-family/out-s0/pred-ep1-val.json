@@ -1,0 +1,514 @@
+[
+{
+"id": "430e0a135d",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s075",
+"margin": 6.01205622474663
+},
+{
+"id": "70f9e784c4",
+"origin": "real",
+"kind": "test",
+"gold": "supported",
+"session": "s069",
+"margin": 1.2876510471105576
+},
+{
+"id": "3881a324cb-fail",
+"origin": "perturbed:run_failed",
+"kind": "test",
+"gold": "unsupported",
+"session": "s018",
+"margin": -8.366684343724046
+},
+{
+"id": "9a98506aa7",
+"origin": "real",
+"kind": "typecheck",
+"gold": "supported",
+"session": "s003",
+"margin": 0.805080384016037
+},
+{
+"id": "14c40bbb12",
+"origin": "real",
+"kind": "test",
+"gold": "supported",
+"session": "s075",
+"margin": 6.108224981464446
+},
+{
+"id": "e0e2d66f65",
+"origin": "real",
+"kind": "test",
+"gold": "supported",
+"session": "s011",
+"margin": 3.3853721134364605
+},
+{
+"id": "d49e12d20a",
+"origin": "real",
+"kind": "test",
+"gold": "supported",
+"session": "s003",
+"margin": 5.908885748125613
+},
+{
+"id": "430e0a135d-fail",
+"origin": "perturbed:run_failed",
+"kind": "typecheck",
+"gold": "unsupported",
+"session": "s075",
+"margin": -8.806827715423424
+},
+{
+"id": "3751288ff3-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s049",
+"margin": -8.061109953850973
+},
+{
+"id": "9117ab4298",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s084",
+"margin": 3.898622440174222
+},
+{
+"id": "7f48cf1879",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s067",
+"margin": 4.880287194624543
+},
+{
+"id": "49ba5196ef",
+"origin": "real",
+"kind": "test",
+"gold": "supported",
+"session": "s054",
+"margin": -3.700689295306802
+},
+{
+"id": "365730b3ad",
+"origin": "real",
+"kind": "test",
+"gold": "supported",
+"session": "s059",
+"margin": -0.6168823838233948
+},
+{
+"id": "d485b2e385",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s069",
+"margin": 2.5267524048686028
+},
+{
+"id": "3751288ff3",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s049",
+"margin": 4.598650078289211
+},
+{
+"id": "81bf392de8",
+"origin": "real",
+"kind": "test",
+"gold": "supported",
+"session": "s067",
+"margin": 5.2199880867265165
+},
+{
+"id": "f9f35d7ddd",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s003",
+"margin": 3.518117828294635
+},
+{
+"id": "b5c7258e12",
+"origin": "real",
+"kind": "lint",
+"gold": "supported",
+"session": "s075",
+"margin": -0.13920974731445312
+},
+{
+"id": "b5c7258e12-fail",
+"origin": "perturbed:run_failed",
+"kind": "lint",
+"gold": "unsupported",
+"session": "s075",
+"margin": -8.090200584148988
+},
+{
+"id": "14c40bbb12-fail",
+"origin": "perturbed:run_failed",
+"kind": "test",
+"gold": "unsupported",
+"session": "s075",
+"margin": -8.170629917585757
+},
+{
+"id": "3881a324cb",
+"origin": "real",
+"kind": "test",
+"gold": "supported",
+"session": "s018",
+"margin": 7.070665368344635
+},
+{
+"id": "c918e785f2",
+"origin": "real",
+"kind": "test",
+"gold": "supported",
+"session": "s008",
+"margin": 5.570377510972321
+},
+{
+"id": "aef529122b",
+"origin": "real",
+"kind": "test",
+"gold": "supported",
+"session": "s084",
+"margin": 1.0409774482250214
+},
+{
+"id": "78c01daee3",
+"origin": "real",
+"kind": "test",
+"gold": "supported",
+"session": "s049",
+"margin": 5.29335405305028
+},
+{
+"id": "syn-pytest-0.25158330p",
+"origin": "syn:count:pytest",
+"kind": "test",
+"gold": "supported",
+"session": "syn-pytest-0.25158330p",
+"margin": 6.144493083003908
+},
+{
+"id": "syn-pytest-0.21221881n",
+"origin": "syn:count:pytest",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-pytest-0.21221881n",
+"margin": -9.534631657093996
+},
+{
+"id": "syn-pytest-0.54417705p",
+"origin": "syn:count:pytest",
+"kind": "test",
+"gold": "supported",
+"session": "syn-pytest-0.54417705p",
+"margin": 3.2615681253373623
+},
+{
+"id": "syn-pytest-0.44485419n",
+"origin": "syn:count:pytest",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-pytest-0.44485419n",
+"margin": -8.999870026862482
+},
+{
+"id": "syn-pytest-0.42361097p",
+"origin": "syn:count:pytest",
+"kind": "test",
+"gold": "supported",
+"session": "syn-pytest-0.42361097p",
+"margin": 7.467506371205673
+},
+{
+"id": "syn-pytest-0.88406457n",
+"origin": "syn:count:pytest",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-pytest-0.88406457n",
+"margin": -8.604971129476326
+},
+{
+"id": "syn-pytest-0.17358875p",
+"origin": "syn:count:pytest",
+"kind": "test",
+"gold": "supported",
+"session": "syn-pytest-0.17358875p",
+"margin": 2.905345894396305
+},
+{
+"id": "syn-pytest-0.51016669n",
+"origin": "syn:count:pytest",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-pytest-0.51016669n",
+"margin": -9.602586777415127
+},
+{
+"id": "syn-pytest-0.73440169p",
+"origin": "syn:count:pytest",
+"kind": "test",
+"gold": "supported",
+"session": "syn-pytest-0.73440169p",
+"margin": 6.453563564224169
+},
+{
+"id": "syn-pytest-0.90659365n",
+"origin": "syn:count:pytest",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-pytest-0.90659365n",
+"margin": -9.110725718317553
+},
+{
+"id": "syn-jest-0.65491098p",
+"origin": "syn:count:jest",
+"kind": "test",
+"gold": "supported",
+"session": "syn-jest-0.65491098p",
+"margin": 6.661236010026187
+},
+{
+"id": "syn-jest-0.24990177n",
+"origin": "syn:count:jest",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-jest-0.24990177n",
+"margin": -9.852491831610678
+},
+{
+"id": "syn-jest-0.48660855p",
+"origin": "syn:count:jest",
+"kind": "test",
+"gold": "supported",
+"session": "syn-jest-0.48660855p",
+"margin": 3.2755087725818157
+},
+{
+"id": "syn-jest-0.22181101n",
+"origin": "syn:count:jest",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-jest-0.22181101n",
+"margin": -9.82783311282401
+},
+{
+"id": "syn-jest-0.30329674p",
+"origin": "syn:count:jest",
+"kind": "test",
+"gold": "supported",
+"session": "syn-jest-0.30329674p",
+"margin": 3.931522373110056
+},
+{
+"id": "syn-jest-0.79925888n",
+"origin": "syn:count:jest",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-jest-0.79925888n",
+"margin": -9.931144544127164
+},
+{
+"id": "syn-jest-0.78427985p",
+"origin": "syn:count:jest",
+"kind": "test",
+"gold": "supported",
+"session": "syn-jest-0.78427985p",
+"margin": 6.372425140580162
+},
+{
+"id": "syn-jest-0.34145892n",
+"origin": "syn:count:jest",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-jest-0.34145892n",
+"margin": -9.758582634152845
+},
+{
+"id": "syn-jest-0.75436978p",
+"origin": "syn:count:jest",
+"kind": "test",
+"gold": "supported",
+"session": "syn-jest-0.75436978p",
+"margin": 5.174638958647847
+},
+{
+"id": "syn-jest-0.13649990n",
+"origin": "syn:count:jest",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-jest-0.13649990n",
+"margin": -9.790838053653715
+},
+{
+"id": "syn-go-0.97081725p",
+"origin": "syn:count:go",
+"kind": "test",
+"gold": "supported",
+"session": "syn-go-0.97081725p",
+"margin": -1.532504990696907
+},
+{
+"id": "syn-go-0.00419611n",
+"origin": "syn:count:go",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-go-0.00419611n",
+"margin": -1.5387096107006073
+},
+{
+"id": "syn-go-0.62416405p",
+"origin": "syn:count:go",
+"kind": "test",
+"gold": "supported",
+"session": "syn-go-0.62416405p",
+"margin": -1.2926521301269531
+},
+{
+"id": "syn-go-0.80020746n",
+"origin": "syn:count:go",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-go-0.80020746n",
+"margin": -1.2823733985424042
+},
+{
+"id": "syn-go-0.00532825p",
+"origin": "syn:count:go",
+"kind": "test",
+"gold": "supported",
+"session": "syn-go-0.00532825p",
+"margin": -1.3406009823083878
+},
+{
+"id": "syn-go-0.02414197n",
+"origin": "syn:count:go",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-go-0.02414197n",
+"margin": -1.3493538051843643
+},
+{
+"id": "syn-go-0.48420155p",
+"origin": "syn:count:go",
+"kind": "test",
+"gold": "supported",
+"session": "syn-go-0.48420155p",
+"margin": -1.3579407334327698
+},
+{
+"id": "syn-go-0.86579342n",
+"origin": "syn:count:go",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-go-0.86579342n",
+"margin": -1.3535614311695099
+},
+{
+"id": "syn-go-0.51017150p",
+"origin": "syn:count:go",
+"kind": "test",
+"gold": "supported",
+"session": "syn-go-0.51017150p",
+"margin": -1.1962566375732422
+},
+{
+"id": "syn-go-0.48245833n",
+"origin": "syn:count:go",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-go-0.48245833n",
+"margin": -1.1974143981933594
+},
+{
+"id": "syn-cargo-0.71325957p",
+"origin": "syn:count:cargo",
+"kind": "test",
+"gold": "supported",
+"session": "syn-cargo-0.71325957p",
+"margin": 7.055560829699971
+},
+{
+"id": "syn-cargo-0.91196856n",
+"origin": "syn:count:cargo",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-cargo-0.91196856n",
+"margin": -9.874870263622142
+},
+{
+"id": "syn-cargo-0.97723406p",
+"origin": "syn:count:cargo",
+"kind": "test",
+"gold": "supported",
+"session": "syn-cargo-0.97723406p",
+"margin": 7.277389345224947
+},
+{
+"id": "syn-cargo-0.63483085n",
+"origin": "syn:count:cargo",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-cargo-0.63483085n",
+"margin": -9.564365029975306
+},
+{
+"id": "syn-cargo-0.81606990p",
+"origin": "syn:count:cargo",
+"kind": "test",
+"gold": "supported",
+"session": "syn-cargo-0.81606990p",
+"margin": 6.041942423209548
+},
+{
+"id": "syn-cargo-0.01713740n",
+"origin": "syn:count:cargo",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-cargo-0.01713740n",
+"margin": -9.62405191504513
+},
+{
+"id": "syn-cargo-0.81562122p",
+"origin": "syn:count:cargo",
+"kind": "test",
+"gold": "supported",
+"session": "syn-cargo-0.81562122p",
+"margin": 2.568122945725918
+},
+{
+"id": "syn-cargo-0.76700074n",
+"origin": "syn:count:cargo",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-cargo-0.76700074n",
+"margin": -9.500642588856863
+},
+{
+"id": "syn-cargo-0.61232371p",
+"origin": "syn:count:cargo",
+"kind": "test",
+"gold": "supported",
+"session": "syn-cargo-0.61232371p",
+"margin": -2.5571785494685173
+},
+{
+"id": "syn-cargo-0.43439798n",
+"origin": "syn:count:cargo",
+"kind": "test",
+"gold": "unsupported",
+"session": "syn-cargo-0.43439798n",
+"margin": -10.026733193721157
+}
+]
