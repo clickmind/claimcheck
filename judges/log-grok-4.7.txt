@@ -1,0 +1,16 @@
+200 grok-4.7 1.277 total 2.135
+400 grok-4.7 1.914 total 2.772
+600 grok-4.7 3.526 total 4.384
+800 grok-4.7 3.526 total 4.384
+1000 grok-4.7 4.457 total 5.315
+1200 grok-4.7 4.701 total 5.559
+1400 grok-4.7 5.71 total 6.568
+1600 grok-4.7 6.354 total 7.212
+1800 grok-4.7 7.08 total 7.939
+2000 grok-4.7 7.632 total 8.49
+2200 grok-4.7 8.559 total 9.417
+2400 grok-4.7 9.666 total 10.524
+2600 grok-4.7 10.156 total 11.014
+2800 grok-4.7 10.698 total 11.556
+3000 grok-4.7 11.285 total 12.143
+done 3042 grok-4.7 {'in': 5046084, 'out': 3042, 'reasoning': 1357817, 'usd': 11.284842000000017, 'calls': 3042, 'est_list_usd': 18.257321999999995} total 12.143 

@@ -302,5 +302,44 @@ Pre-registered before training: [`PREREGISTRATION.md`](finetune/scale-family/PRE
 
 **Cost:** 8 training + 3 smoke sandboxes logged at 19,738 s, about $2.92, plus about $0.74–$1.10 for the 2 runs ended by the runtime limit (exact duration unknown).
 
+## Frontier-judge baselines, run #1 (`judges/`)
+
+Pre-registered before any API call: [`judges/prereg-r6-judges.md`](judges/prereg-r6-judges.md) (local commit b0771a7, 2026-10-22 ~09:15 CT). Data is pinned at 8079320. Each item got 1 call at temperature 0 plus 8 repeats at temperature 0.7 (seed 1–8): 3,042 calls per model, with 0 API errors and 0 unparsed replies. Raw replies are in `judges/raw-*.jsonl` and every number below is in `judges/results.json`.
+
+**Deviations:** GPT and Claude were **skipped**, because there are no API keys for them in this environment. The pre-reg wasn't pushed before the run (no git push credentials), so it's timestamped only by its local commit. The runner's live parse used "unsupported anywhere in the reply". The analysis applies the pre-registered rule (first occurrence) to the raw replies. The "best check" comparator is the max over all v2/v3/v3.1 checks and number-presence, chosen per set after seeing results, so it's optimistic.
+
+Primary call (temperature 0). Balanced accuracy has a 95% item-bootstrap CI. Miss rate = share of false claims judged supported.
+
+| Set | n true/false | grok-4.20 bal. acc. | grok-4.20 miss | grok-4.7 bal. acc. | grok-4.7 miss | Best no-model check |
+|---|---|---|---|---|---|---|
+| real77 | 38/39 | 0.961 [0.91, 1.0] | 0.026 | 0.921 [0.859, 0.974] | 0.0 | 0.922 (`v3:last_run_wins`) |
+| masked77 | 38/39 | 0.884 [0.808, 0.95] | 0.154 | 0.539 [0.5, 0.588] | 0.0 | 0.781 (`number_presence`) |
+| heldout80 | 40/40 | 0.938 [0.882, 0.987] | 0.125 | 1.0 [1.0, 1.0] | 0.0 | 0.975 (`v2:number_presence`) |
+| trainfmt33 | 15/18 | 0.778 [0.658, 0.895] | 0.444 | 0.9 [0.786, 1.0] | 0.0 | 0.933 (`number_presence`) |
+| family41 | 20/21 | 0.902 [0.801, 0.978] | 0.095 | 0.727 [0.593, 0.849] | 0.095 | 0.786 (`v3:cwd_path_comparator`) |
+| xcount30 | 0/30 | catch 1.0 | 0.0 | catch 1.0 | 0.0 | - |
+
+On real77, rules v1 (`results/rules.json` @1852c8e) score balanced accuracy **0.974**, and Qwen2.5-0.5B+LoRA scored accuracy 0.831 (table above). Across the 8 repeats, balanced accuracy on real77 ranged 0.948–0.974 (grok-4.20) and 0.895–0.921 (grok-4.7).
+
+**Read.** Neither judge beats the hand-written rules on the real test: grok-4.20 scores 0.961 and grok-4.7 scores 0.921, against 0.974 for the rules. The CIs overlap, so this isn't a significant difference. grok-4.7 misses no false claims but rejects true ones: on the cue-stripped set its true-claim accuracy is 0.079, so it says "unsupported" whenever the exit line is removed. Family-eval true-claim accuracy is 0.55 for grok-4.7. On the synthetic held-out formats, number-presence (0.975) is about as good as either judge. Small sets: n=30–80.
+
+**Cost (xAI-reported, `cost_in_usd_ticks`):** grok-4.20 **$0.86**, grok-4.7 **$11.28**, total **$12.14** (list-price estimate without cache discount: $20.60). Model-API spend, outside the E2B cap. E2B $0.
+
+### Claude arm (addendum A, pre-registered at c44877b before any Claude call)
+`claude-sonnet-5-5`, 3,042 calls, 0 errors, 0 unparsed. **Deviation:** the API rejects `temperature` for this model ("`temperature` is deprecated for this model"), so every call, primary and repeats, used the API's default sampling. The primary call isn't temperature 0.
+
+| Set | Bal. acc. [95% CI] | True-claim acc. | Miss rate on false claims | 8-repeat range |
+|---|---|---|---|---|
+| real77 | 0.987 [0.958, 1.0] | 1.0 | 0.026 | 0.948–0.974 |
+| masked77 | 0.842 [0.763, 0.917] | 0.711 | 0.026 | 0.83–0.869 |
+| heldout80 | 1.0 [1.0, 1.0] | 1.0 | 0.0 | 0.975–1.0 |
+| trainfmt33 | 0.933 [0.833, 1.0] | 0.867 | 0.0 | 0.939–0.967 |
+| family41 | 0.785 [0.659, 0.895] | 0.95 | 0.381 | 0.761–0.832 |
+| xcount30 | catch 1.0 | - | 0.0 | 0.967–1.0 |
+
+**Read.** On real77, Claude Sonnet 5.5 (**0.987**) is level with the hand-written rules (**0.974**). The CIs overlap, so there's no significant difference. It's the only judge with true-claim accuracy 1.0 on real77. Its weak spot is lint/typecheck: it misses **0.381** of false family claims. On the cue-stripped set it keeps catch at 0.974 but true-claim accuracy drops to 0.711.
+
+**Cost:** $7.84 (returned usage × list price; Anthropic doesn't return a $ figure). Model-API total for run #1: **$19.98** of the $55 cap.
+
 ## Next: ClaimCheck World (pre-registered, not run)
 [`finetune/world/PREREGISTRATION.md`](finetune/world/PREREGISTRATION.md) (commit 36997d8): real tiny vitest/pytest repos run in E2B with injected chaos (flaky tests, skipped files, timeouts, truncated logs, partial reruns, wrong cwd, missing env). A local model writes the claim, and labels come from the actual reporter output. Two hypotheses: World data beats the synthetic generator on held-out real logs, and a checker-driven fix loop raises the share of episodes that end with a true claim by ≥ 10 points.

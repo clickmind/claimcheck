@@ -1,0 +1,16 @@
+200 claude-sonnet-5-5 0.636 total 12.779
+400 claude-sonnet-5-5 1.12 total 13.263
+600 claude-sonnet-5-5 1.634 total 13.777
+800 claude-sonnet-5-5 2.181 total 14.324
+1000 claude-sonnet-5-5 2.643 total 14.786
+1200 claude-sonnet-5-5 3.139 total 15.282
+1400 claude-sonnet-5-5 3.644 total 15.787
+1600 claude-sonnet-5-5 4.165 total 16.308
+1800 claude-sonnet-5-5 4.663 total 16.806
+2000 claude-sonnet-5-5 5.207 total 17.35
+2200 claude-sonnet-5-5 5.733 total 17.876
+2400 claude-sonnet-5-5 6.209 total 18.352
+2600 claude-sonnet-5-5 6.741 total 18.884
+2800 claude-sonnet-5-5 7.249 total 19.392
+3000 claude-sonnet-5-5 7.8 total 19.943
+done 3042 claude-sonnet-5-5 {'in': 1957599, 'out': 392139, 'reasoning': 0, 'usd': 7.836588000000001, 'calls': 3042, 'est_list_usd': 7.836588000000001} total 19.979 
