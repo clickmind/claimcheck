@@ -1,0 +1,878 @@
+{
+"61cf96eed5-fail": {
+"session": "s071",
+"split": "train"
+},
+"581ce747fa-fail": {
+"session": "s022",
+"split": "test"
+},
+"430e0a135d": {
+"session": "s075",
+"split": "train"
+},
+"b76877d314-swap": {
+"session": "s021",
+"split": "test"
+},
+"eed2e665b8-swap": {
+"session": "s087",
+"split": "train"
+},
+"577dbf5598": {
+"session": "s022",
+"split": "test"
+},
+"c645c01037": {
+"session": "s038",
+"split": "test"
+},
+"558d350fe1": {
+"session": "s032",
+"split": "test"
+},
+"90df68709e": {
+"session": "s022",
+"split": "test"
+},
+"9a98506aa7-swap": {
+"session": "s003",
+"split": "train"
+},
+"6b332b7d87-swap": {
+"session": "s023",
+"split": "train"
+},
+"9117ab4298-swap": {
+"session": "s084",
+"split": "train"
+},
+"37b40b6eec-count": {
+"session": "s062",
+"split": "train"
+},
+"5a83849ed7": {
+"session": "s006",
+"split": "train"
+},
+"863a2480e5": {
+"session": "s072",
+"split": "test"
+},
+"5d992af731": {
+"session": "s006",
+"split": "train"
+},
+"4f76a82ef3": {
+"session": "s077",
+"split": "train"
+},
+"90df68709e-fail": {
+"session": "s022",
+"split": "test"
+},
+"d824ea886a": {
+"session": "s079",
+"split": "train"
+},
+"70f9e784c4": {
+"session": "s069",
+"split": "train"
+},
+"421244e8ae": {
+"session": "s007",
+"split": "train"
+},
+"2e8a419e95-fail": {
+"session": "s082",
+"split": "train"
+},
+"f8302b151b": {
+"session": "s001",
+"split": "test"
+},
+"e0e2d66f65-count": {
+"session": "s011",
+"split": "train"
+},
+"2614be6955-fail": {
+"session": "s037",
+"split": "train"
+},
+"577dbf5598-swap": {
+"session": "s022",
+"split": "test"
+},
+"812dcccf88": {
+"session": "s020",
+"split": "test"
+},
+"4e0b611818-fail": {
+"session": "s045",
+"split": "test"
+},
+"cca8ff65fa-fail": {
+"session": "s020",
+"split": "test"
+},
+"a12651199f": {
+"session": "s031",
+"split": "train"
+},
+"a3efd87830-fail": {
+"session": "s004",
+"split": "train"
+},
+"fb973e36b6-count": {
+"session": "s078",
+"split": "train"
+},
+"09f75a6497": {
+"session": "s047",
+"split": "test"
+},
+"5a83849ed7-fail": {
+"session": "s006",
+"split": "train"
+},
+"a8a6efb21f-swap": {
+"session": "s055",
+"split": "train"
+},
+"e61c4aaa01-swap": {
+"session": "s041",
+"split": "train"
+},
+"472f1d97b6": {
+"session": "s074",
+"split": "train"
+},
+"646d498e4c": {
+"session": "s065",
+"split": "test"
+},
+"a62873864a-swap": {
+"session": "s017",
+"split": "test"
+},
+"c428a3f42d-count": {
+"session": "s061",
+"split": "test"
+},
+"812dcccf88-count": {
+"session": "s020",
+"split": "test"
+},
+"2b9f99ab71": {
+"session": "s052",
+"split": "test"
+},
+"59834d003a": {
+"session": "s035",
+"split": "train"
+},
+"21627eb877-count": {
+"session": "s004",
+"split": "train"
+},
+"a823774389-swap": {
+"session": "s039",
+"split": "test"
+},
+"863a2480e5-fail": {
+"session": "s072",
+"split": "test"
+},
+"af84008c23": {
+"session": "s076",
+"split": "test"
+},
+"4f88bc2305-fail": {
+"session": "s053",
+"split": "train"
+},
+"3881a324cb-fail": {
+"session": "s018",
+"split": "train"
+},
+"9a98506aa7": {
+"session": "s003",
+"split": "train"
+},
+"6f5579e1b2-fail": {
+"session": "s015",
+"split": "train"
+},
+"a3a3330639-swap": {
+"session": "s002",
+"split": "train"
+},
+"14c40bbb12": {
+"session": "s075",
+"split": "train"
+},
+"21c4c201af-count": {
+"session": "s043",
+"split": "train"
+},
+"a3efd87830": {
+"session": "s004",
+"split": "train"
+},
+"2b9f99ab71-swap": {
+"session": "s052",
+"split": "test"
+},
+"22510a91ba-fail": {
+"session": "s040",
+"split": "train"
+},
+"e0e2d66f65": {
+"session": "s011",
+"split": "train"
+},
+"64ba6bca60": {
+"session": "s055",
+"split": "train"
+},
+"d824ea886a-count": {
+"session": "s079",
+"split": "train"
+},
+"e9c88effed-swap": {
+"session": "s057",
+"split": "test"
+},
+"1725d3844b": {
+"session": "s028",
+"split": "train"
+},
+"ea20eb4d1b-fail": {
+"session": "s080",
+"split": "train"
+},
+"85e983342f-count": {
+"session": "s063",
+"split": "test"
+},
+"365730b3ad-swap": {
+"session": "s059",
+"split": "train"
+},
+"2e8a419e95": {
+"session": "s082",
+"split": "train"
+},
+"c918e785f2-swap": {
+"session": "s008",
+"split": "train"
+},
+"87073b220b-swap": {
+"session": "s004",
+"split": "train"
+},
+"0a7cdf291f": {
+"session": "s000",
+"split": "test"
+},
+"d49e12d20a": {
+"session": "s003",
+"split": "train"
+},
+"77127572e4-swap": {
+"session": "s012",
+"split": "train"
+},
+"bdf38754a4": {
+"session": "s013",
+"split": "train"
+},
+"7cc433db57-fail": {
+"session": "s050",
+"split": "train"
+},
+"cca8ff65fa": {
+"session": "s020",
+"split": "test"
+},
+"4f76a82ef3-fail": {
+"session": "s077",
+"split": "train"
+},
+"5fa0c0dfc6": {
+"session": "s026",
+"split": "train"
+},
+"3e4b86c208": {
+"session": "s085",
+"split": "train"
+},
+"1439b2f61e": {
+"session": "s033",
+"split": "test"
+},
+"21f6686e2a": {
+"session": "s016",
+"split": "test"
+},
+"e9c88effed": {
+"session": "s057",
+"split": "test"
+},
+"a82340d578": {
+"session": "s014",
+"split": "train"
+},
+"f7a6116099": {
+"session": "s046",
+"split": "train"
+},
+"076bbdd339-swap": {
+"session": "s044",
+"split": "train"
+},
+"37b40b6eec": {
+"session": "s062",
+"split": "train"
+},
+"430e0a135d-fail": {
+"session": "s075",
+"split": "train"
+},
+"9496125fd8": {
+"session": "s068",
+"split": "train"
+},
+"ea20eb4d1b": {
+"session": "s080",
+"split": "train"
+},
+"5ed01b966c-fail": {
+"session": "s082",
+"split": "train"
+},
+"87bd8db35c-swap": {
+"session": "s005",
+"split": "test"
+},
+"f9f35d7ddd-swap": {
+"session": "s003",
+"split": "train"
+},
+"3751288ff3-fail": {
+"session": "s049",
+"split": "train"
+},
+"a62873864a": {
+"session": "s017",
+"split": "test"
+},
+"ae405cea73-count": {
+"session": "s030",
+"split": "train"
+},
+"af2f2b741a-count": {
+"session": "s027",
+"split": "train"
+},
+"1725d3844b-swap": {
+"session": "s028",
+"split": "train"
+},
+"f0cac0e684-count": {
+"session": "s073",
+"split": "test"
+},
+"3e4b86c208-fail": {
+"session": "s085",
+"split": "train"
+},
+"9117ab4298": {
+"session": "s084",
+"split": "train"
+},
+"77ba68a20d": {
+"session": "s035",
+"split": "train"
+},
+"7f48cf1879": {
+"session": "s067",
+"split": "train"
+},
+"37c3251486": {
+"session": "s080",
+"split": "train"
+},
+"04d0540b9c": {
+"session": "s058",
+"split": "test"
+},
+"6228b5c71b-fail": {
+"session": "s066",
+"split": "test"
+},
+"6228b5c71b": {
+"session": "s066",
+"split": "test"
+},
+"a51223ac26": {
+"session": "s088",
+"split": "test"
+},
+"1439b2f61e-fail": {
+"session": "s033",
+"split": "test"
+},
+"61e105f581-count": {
+"session": "s051",
+"split": "train"
+},
+"a12651199f-fail": {
+"session": "s031",
+"split": "train"
+},
+"558d350fe1-swap": {
+"session": "s032",
+"split": "test"
+},
+"09f75a6497-count": {
+"session": "s047",
+"split": "test"
+},
+"428bc1e497": {
+"session": "s042",
+"split": "test"
+},
+"317b247be6": {
+"session": "s086",
+"split": "train"
+},
+"2614be6955": {
+"session": "s037",
+"split": "train"
+},
+"49ba5196ef": {
+"session": "s054",
+"split": "train"
+},
+"38e78e2746-fail": {
+"session": "s056",
+"split": "test"
+},
+"307d8fcecc-fail": {
+"session": "s060",
+"split": "test"
+},
+"581ce747fa": {
+"session": "s022",
+"split": "test"
+},
+"87bd8db35c": {
+"session": "s005",
+"split": "test"
+},
+"7cc433db57": {
+"session": "s050",
+"split": "train"
+},
+"365730b3ad": {
+"session": "s059",
+"split": "train"
+},
+"e61c4aaa01": {
+"session": "s041",
+"split": "train"
+},
+"42de05e2ca": {
+"session": "s064",
+"split": "train"
+},
+"db4ed82881": {
+"session": "s033",
+"split": "test"
+},
+"98c790f993-swap": {
+"session": "s083",
+"split": "train"
+},
+"5b11ace4d2": {
+"session": "s070",
+"split": "test"
+},
+"5ed01b966c": {
+"session": "s082",
+"split": "train"
+},
+"b76877d314": {
+"session": "s021",
+"split": "test"
+},
+"9955d88703": {
+"session": "s024",
+"split": "test"
+},
+"aef529122b-count": {
+"session": "s084",
+"split": "train"
+},
+"75d96a3708": {
+"session": "s034",
+"split": "train"
+},
+"d49e12d20a-count": {
+"session": "s003",
+"split": "train"
+},
+"77127572e4": {
+"session": "s012",
+"split": "train"
+},
+"a3a3330639": {
+"session": "s002",
+"split": "train"
+},
+"de12fb9dcb": {
+"session": "s025",
+"split": "test"
+},
+"148659c295": {
+"session": "s036",
+"split": "train"
+},
+"d485b2e385": {
+"session": "s069",
+"split": "train"
+},
+"a8a6efb21f": {
+"session": "s055",
+"split": "train"
+},
+"9955d88703-count": {
+"session": "s024",
+"split": "test"
+},
+"472f1d97b6-fail": {
+"session": "s074",
+"split": "train"
+},
+"3751288ff3": {
+"session": "s049",
+"split": "train"
+},
+"61cf96eed5": {
+"session": "s071",
+"split": "train"
+},
+"9496125fd8-fail": {
+"session": "s068",
+"split": "train"
+},
+"4f88bc2305": {
+"session": "s053",
+"split": "train"
+},
+"eed2e665b8": {
+"session": "s087",
+"split": "train"
+},
+"04d0540b9c-fail": {
+"session": "s058",
+"split": "test"
+},
+"a823774389": {
+"session": "s039",
+"split": "test"
+},
+"317b247be6-fail": {
+"session": "s086",
+"split": "train"
+},
+"356b404983": {
+"session": "s006",
+"split": "train"
+},
+"e09b9bb374": {
+"session": "s010",
+"split": "test"
+},
+"f0cac0e684": {
+"session": "s073",
+"split": "test"
+},
+"38e78e2746": {
+"session": "s056",
+"split": "test"
+},
+"70f9e784c4-count": {
+"session": "s069",
+"split": "train"
+},
+"bdf38754a4-swap": {
+"session": "s013",
+"split": "train"
+},
+"e09b9bb374-count": {
+"session": "s010",
+"split": "test"
+},
+"21f6686e2a-swap": {
+"session": "s016",
+"split": "test"
+},
+"e1b47f2f42-fail": {
+"session": "s009",
+"split": "train"
+},
+"603bc0d3ca": {
+"session": "s081",
+"split": "train"
+},
+"9121a09aa3": {
+"session": "s025",
+"split": "test"
+},
+"db4ed82881-fail": {
+"session": "s033",
+"split": "test"
+},
+"a51223ac26-fail": {
+"session": "s088",
+"split": "test"
+},
+"9121a09aa3-swap": {
+"session": "s025",
+"split": "test"
+},
+"076bbdd339": {
+"session": "s044",
+"split": "train"
+},
+"21c4c201af": {
+"session": "s043",
+"split": "train"
+},
+"9b1fa4ace0": {
+"session": "s048",
+"split": "test"
+},
+"e1b47f2f42": {
+"session": "s009",
+"split": "train"
+},
+"64ba6bca60-fail": {
+"session": "s055",
+"split": "train"
+},
+"361798a1c6-fail": {
+"session": "s019",
+"split": "train"
+},
+"c645c01037-count": {
+"session": "s038",
+"split": "test"
+},
+"78c01daee3-swap": {
+"session": "s049",
+"split": "train"
+},
+"5d992af731-swap": {
+"session": "s006",
+"split": "train"
+},
+"77ba68a20d-swap": {
+"session": "s035",
+"split": "train"
+},
+"5fa0c0dfc6-count": {
+"session": "s026",
+"split": "train"
+},
+"7311a82809": {
+"session": "s029",
+"split": "test"
+},
+"af84008c23-count": {
+"session": "s076",
+"split": "test"
+},
+"81bf392de8": {
+"session": "s067",
+"split": "train"
+},
+"f9f35d7ddd": {
+"session": "s003",
+"split": "train"
+},
+"ae405cea73": {
+"session": "s030",
+"split": "train"
+},
+"61e105f581": {
+"session": "s051",
+"split": "train"
+},
+"b5c7258e12": {
+"session": "s075",
+"split": "train"
+},
+"421244e8ae-fail": {
+"session": "s007",
+"split": "train"
+},
+"603bc0d3ca-fail": {
+"session": "s081",
+"split": "train"
+},
+"307d8fcecc": {
+"session": "s060",
+"split": "test"
+},
+"b5c7258e12-fail": {
+"session": "s075",
+"split": "train"
+},
+"6f5579e1b2": {
+"session": "s015",
+"split": "train"
+},
+"0a7cdf291f-swap": {
+"session": "s000",
+"split": "test"
+},
+"d485b2e385-swap": {
+"session": "s069",
+"split": "train"
+},
+"9b1fa4ace0-swap": {
+"session": "s048",
+"split": "test"
+},
+"7311a82809-swap": {
+"session": "s029",
+"split": "test"
+},
+"148659c295-swap": {
+"session": "s036",
+"split": "train"
+},
+"fb973e36b6": {
+"session": "s078",
+"split": "train"
+},
+"f8302b151b-count": {
+"session": "s001",
+"split": "test"
+},
+"14c40bbb12-fail": {
+"session": "s075",
+"split": "train"
+},
+"6b332b7d87": {
+"session": "s023",
+"split": "train"
+},
+"3881a324cb": {
+"session": "s018",
+"split": "train"
+},
+"356b404983-fail": {
+"session": "s006",
+"split": "train"
+},
+"81bf392de8-count": {
+"session": "s067",
+"split": "train"
+},
+"af2f2b741a": {
+"session": "s027",
+"split": "train"
+},
+"de12fb9dcb-swap": {
+"session": "s025",
+"split": "test"
+},
+"361798a1c6": {
+"session": "s019",
+"split": "train"
+},
+"4e0b611818": {
+"session": "s045",
+"split": "test"
+},
+"37c3251486-fail": {
+"session": "s080",
+"split": "train"
+},
+"42de05e2ca-count": {
+"session": "s064",
+"split": "train"
+},
+"c428a3f42d": {
+"session": "s061",
+"split": "test"
+},
+"c918e785f2": {
+"session": "s008",
+"split": "train"
+},
+"75d96a3708-swap": {
+"session": "s034",
+"split": "train"
+},
+"59834d003a-fail": {
+"session": "s035",
+"split": "train"
+},
+"a82340d578-swap": {
+"session": "s014",
+"split": "train"
+},
+"22510a91ba": {
+"session": "s040",
+"split": "train"
+},
+"7f48cf1879-swap": {
+"session": "s067",
+"split": "train"
+},
+"f7a6116099-count": {
+"session": "s046",
+"split": "train"
+},
+"aef529122b": {
+"session": "s084",
+"split": "train"
+},
+"87073b220b": {
+"session": "s004",
+"split": "train"
+},
+"428bc1e497-swap": {
+"session": "s042",
+"split": "test"
+},
+"49ba5196ef-swap": {
+"session": "s054",
+"split": "train"
+},
+"98c790f993": {
+"session": "s083",
+"split": "train"
+},
+"85e983342f": {
+"session": "s063",
+"split": "test"
+},
+"646d498e4c-fail": {
+"session": "s065",
+"split": "test"
+},
+"21627eb877": {
+"session": "s004",
+"split": "train"
+},
+"78c01daee3": {
+"session": "s049",
+"split": "train"
+}
+}

@@ -96,3 +96,39 @@ Results go to `results/<checker>.json` with every prediction.
 ## License
 
 MIT. See `LICENSE`.
+
+## Small fine-tuning experiment (`finetune/`)
+
+**Question:** can a tiny open model learn this task from about 140 examples?
+
+**Setup**
+- **Model:** `Qwen/Qwen2.5-0.5B-Instruct`, LoRA (r=16, alpha=32, on q/k/v/o), 3 epochs, lr 2e-4 cosine, fp32 on CPU.
+- **Hardware:** an 8-vCPU / 8 GB E2B sandbox. Training took about 15 minutes.
+- **Split by session** (`finetune/split.json`): 89 sessions; 34 held-out sessions = **77 test items (35%)**, 142 train items. No session appears in both.
+- **Prediction:** the answer with the higher log-probability, "supported" or "unsupported". There is no tuned threshold.
+- **Zero-shot baseline:** the same model and prompt, before training.
+- **CIs:** 95% bootstrap over test *sessions* (2000 draws).
+
+**Held-out results (77 items; 38 supported, 39 not)**
+
+| Checker | Accuracy [95% CI] | F1 [95% CI] | Catch rate | True-claim acc. |
+|---|---|---|---|---|
+| Qwen2.5-0.5B zero-shot | 0.571 [0.507, 0.643] | 0.267 [0.056, 0.448] | 0.154 | 0.974 |
+| **Qwen2.5-0.5B + LoRA** | **0.831 [0.753, 0.905]** | **0.812 [0.698, 0.901]** | **0.718** | 0.949 |
+| Keyword heuristic | 0.701 [0.611, 0.784] | 0.596 [0.408, 0.737] | 0.436 | 0.974 |
+| Hand-written rules | 0.974 [0.930, 1.000] | 0.974 [0.932, 1.000] | 0.974 | 0.974 |
+| grok-4.20-0309-non-reasoning | 0.974 [0.937, 1.000] | 0.974 [0.938, 1.000] | 0.974 | 0.974 |
+| grok-4.7 | 0.909 [0.847, 0.971] | 0.918 [0.869, 0.972] | 1.000 | 0.821 |
+
+The Grok and rules rows are the v1.2 predictions restricted to the same 77 items (no new API calls).
+
+**What this shows.** Fine-tuning helped a lot. On held-out sessions, zero-shot caught 15% of bad claims and LoRA caught 72%, and the CIs don't overlap on accuracy or F1. The tiny model is still well behind the hand-written rules and both Grok models. Fine-tuning moved a 0.5B model from near-useless to better than a keyword check, not to frontier level.
+
+**Limits**
+- **Small test set.** 77 items from 34 sessions, so the CIs are wide.
+- **Synthetic bad claims.** The bad examples are rule-made, and the train and test perturbations use the same three recipes. The model may be learning the recipes rather than general claim checking. This is the biggest caveat.
+- **Some evidence crosses the split.** In "wrong run" items, the borrowed evidence can come from a session on the other side of the split. The claim never crosses, but some of the evidence text does.
+- **Minimal tuning.** One seed, one set of hyperparameters, no validation set, no threshold tuning. Zero-shot is scored the same way with no threshold, which may understate it.
+- **1.5B not finished.** A 1.5B run was started and stopped: on CPU, it would not have finished inside the sandbox time limit.
+
+**Reproduce:** `cd finetune && python run_e2b.py Qwen/Qwen2.5-0.5B-Instruct q05 && python analyze.py`. This needs `E2B_API_KEY` and a template with torch, transformers 4.46.3 and peft 0.13.2.
