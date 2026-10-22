@@ -76,7 +76,7 @@ v1 → v1.1 changed the prompt, the data and the labels at once. v1.1 → v1.2 o
 ## Limitations (read before citing)
 
 - **Negatives are synthetic.** Every *not supported* item is a rule-made perturbation. Real unearned claims may be subtler (scope creep, "all tests" when only one file ran).
-- **The rules baseline is close to how labels were made**, so its 0.90 overstates how hard the task is for rules on new data. Most of its errors on real items come from log excerpts that cut off the count.
+- **The rules baseline is close to how labels were made**, so its 0.922 accuracy (202/219, recomputed from `results/rules.json`, commit 1852c8e) overstates how hard the task is for rules on new data. Most of its errors on real items come from log excerpts that cut off the count.
 - **One annotator, one codebase, one agent setup.** No inter-annotator agreement was measured.
 - **Excerpts are truncated** to about 1,200 characters, so some true claims look unsupported.
 - **Post-hoc relabels.** See above.
@@ -238,6 +238,6 @@ Only seed 2 met the ≥ 0.95 val guardrail at some epoch. The other three used t
 
 **Honest read.** Counting does generalize across synthetic formats: 1.00 catch on two formats never trained. But it barely transfers to the real vitest claims from my agents' logs (0.28). The synthetic task is learnable, and the gap is synthetic → real, not format → format. Real claims are messier: fractions like `<dir>/23`, several numbers per line, partial summaries. The guardrail held at ~0.99 true-claim accuracy, but the selected checkpoints are conservative and catch fewer fakes overall (0.59 vs 0.97 for last round's full training). Wrong-run transfer also got worse without vitest-format counterfactuals in training. Four seeds and 10–15 items per recipe: early signals only.
 
-**Cost.** About $2.04 of E2B CPU time at list price (4 sandboxes, 13,754 sandbox-seconds), which brings the whole counterfactual + count-family series to about $7.20 of the $10 cap. No paid model APIs. Sandbox ids and kill times are in `finetune/count-family/my-sandboxes.txt`.
+**Cost.** About $2.04 of E2B CPU time at list price (4 sandboxes, 13,754 sandbox-seconds), which brings the whole counterfactual + count-family series to about $7.20 of the series cap (since raised to a hard $100 E2B cap, per John Golat, Oct 22 2026; model-API spend is tracked separately and is not covered by the cap). Spend to date: see [`docs/spend-ledger.md`](docs/spend-ledger.md). No paid model APIs. Sandbox ids and kill times are in `finetune/count-family/my-sandboxes.txt`.
 
 Reproduce: `python build.py`, then `python run_e2b3.py s0 --skip-zs --train train.jsonl --seed 0` (seeds 0–3), then `python analyze.py`.
