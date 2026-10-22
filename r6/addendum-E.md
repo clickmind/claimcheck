@@ -51,3 +51,8 @@ Output schema:
 - ImpossibleBench (2025). https://arxiv.org/abs/2510.20270. Used for the no-chaos negative control in the World arm.
 - Cohen 1960, *A Coefficient of Agreement for Nominal Scales*. https://doi.org/10.1177/001316446002000104. Used for kappa.
 - Artstein & Poesio 2008, *Inter-Coder Agreement for Computational Linguistics*. https://aclanthology.org/J08-4004/. Used for reporting annotation agreement.
+
+## E8 Freeze record (E1), 2026-10-22, before any seed-3 model call
+- Caller committed at 399f524: `labeler/model_labeler.py` sha256 `e65144a183595cfda7c7e3092db43d2a383d4c5b2eb9c607133a7d81efbc1578`. Prompt file `labeler/model_labeler_prompt.txt` (byte-identical to the E2 block; checked by a unit test) sha256 `0fc4aa3a0e1c051a5c85cd9a587a1fc898467fb855591d7ca32e57d0377f6b2c`.
+- List price per https://docs.x.ai/docs/models (fetched 2026-10-22). grok-4.20-0309 (reasoning, non-reasoning and multi-agent are priced the same). Under 200k prompt tokens: $1.25/1M input, $0.20/1M cached input, $2.50/1M output. At 200k or more: $2.50 / $0.40 / $5.00. The model string sent is `grok-4.20` (alias), per E1.
+- Dry run on seed 3 (no API call): conservative estimated max of $0.2847 for 50 rows.

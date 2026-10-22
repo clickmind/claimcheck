@@ -12,3 +12,4 @@ Created 2026-10-22. No earlier lab-log.md existed in this repo or in /workspace/
 - **E2B series cap: $100.** John said so directly in the room at 2026-10-22 12:16 CT ("lets set to $100").
 - **Spend so far (E2B), for budgeting: $13.80.** Repo ledgers show $7.31. career/xai/spend-ledger.md shows about $13.44–13.80. John quoted $8.18. About $0.24 is untraced. At least $0.63 of the gap traces to rounds d1e34ff and 96f788c. The total stays unsettled until it is checked in the E2B console. Remaining E2B headroom: $100 − $13.80 = $86.20, or at most $76.20 after holding a $10 reserve.
 - grok-4.20 spend so far against the $10 cap: $0 recorded here. The per-call log starts at `r6/spend/labeler-judge-spend.jsonl` (Addendum E).
+- 2026-10-22: model-labeler caller frozen at 399f524 (sha256 e65144a1…1578). grok-4.20 list price is $1.25/$2.50 per 1M in/out (<200k), from https://docs.x.ai/docs/models. Spend still $0.
