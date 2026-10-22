@@ -1,0 +1,11 @@
+# Data card: <set name>
+- Source / generator + commit: 
+- Seed(s): 
+- File + sha256: 
+- Size (n, label balance): 
+- Label method: 
+- Frozen check commit: 03a3acac6d87b4c5ca825df3472b172ec19d7c3b
+- Scores (accuracy): majority_class / number_presence / xy_parser / sum_suites / last_number / best
+- Clean (best - majority <= 0.10)?: 
+- Leakage checks run + results: 
+- Known caveats: 
